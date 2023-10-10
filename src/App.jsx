@@ -1,35 +1,24 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import SideBar2 from "./Componentes/SideBar2";
+import Home from "./Componentes/Home";
+import Header from "./Componentes/Header";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  //Constantes para desplegar menu
+  const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
+
+  const OpenSidebar = () => {
+    setOpenSidebarToggle(!openSidebarToggle)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div className="grid-container">
+      <Header OpenSidebar={OpenSidebar}/>
+      <SideBar2 openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar}/>
+      <Home />
+    </div>
+  );
 }
 
-export default App
+export default App;
