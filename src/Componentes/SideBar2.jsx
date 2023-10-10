@@ -14,74 +14,53 @@ function SideBar2({ openSidebarToggle, OpenSidebar }) {
                 <span className='icon close_icon' onClick={OpenSidebar}>X</span>
             </div>
 
-            <div class="scrollbar" id="style-1">
+            <div className="scrollbar" id="style-1">
                 <ul className='sidebar-list'>
                     <li className='sidebar-list-title'>
                         VENTAS
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Clientes"><BsPersonFillAdd className='icon' /> Clientes</Link>
-                        </a>
+                        <NavLink to="/Clientes"><BsPersonFillAdd className='icon' /> Clientes</NavLink>
+
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Pedidos-de-Venta"><BsReceiptCutoff className='icon' /> Pedidos de Venta</Link>
-                        </a>
+                        <NavLink to="/Ventas"><BsReceiptCutoff className='icon' /> Pedidos de Venta</NavLink>
                     </li>
                     <li className='sidebar-list-title'>
                         COMPRAS
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Proveedores"><BsPersonFillAdd className='icon' /> Proveedores</Link>
-                        </a>
+                        <NavLink to="/Proveedores"><BsPersonFillAdd className='icon' /> Proveedores</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Pedidos-de-Compras"><BsFillCartFill className='icon' /> Pedidos de Compra</Link>
-                        </a>
+                        <NavLink to="/Compras"><BsFillCartFill className='icon' /> Pedidos de Compra</NavLink>
                     </li>
                     <li className='sidebar-list-title'>
                         INVENTARIO
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Productos"><BsFillBasket3Fill className='icon' /> Productos</Link>
-                        </a>
+                        <NavLink to="/Productos"><BsFillBasket3Fill className='icon' /> Productos</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Marcas"><BsShopWindow className='icon' /> Marcas</Link>
-                        </a>
+                        <NavLink to="/Marcas"><BsShopWindow className='icon' /> Marcas</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Categorias"><BsFillGrid3X3GapFill className='icon' /> Categorías</Link>
-                        </a>
+                        <NavLink to="/Categorias"><BsFillGrid3X3GapFill className='icon' /> Categorías</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Ajuste-de-Inventario"><BsListCheck className='icon' /> Ajuste de Inventario</Link>
-                        </a>
+                        <NavLink to="/AjusteInventario"><BsListCheck className='icon' /> Ajuste de Inventario</NavLink>
                     </li>
                     <li className='sidebar-list-title'>
                         EMPLEADOS
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Empleados"><BsFillPersonVcardFill className='icon' /> Empleados</Link>
-                        </a>
+                        <NavLink to="/Empleados"><BsFillPersonVcardFill className='icon' /> Empleados</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Usuarios"><BsFillPersonFill className='icon' /> Usuarios</Link>
-                        </a>
+                        <NavLink to="/Usuarios"><BsFillPersonFill className='icon' /> Usuarios</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
-                        <a href="">
-                            <Link to="/Reportes"><BsFillClipboard2DataFill className='icon' /> Reportes</Link>
-                        </a>
+                        <NavLink to="/Reportes"><BsFillClipboard2DataFill className='icon' /> Reportes</NavLink>
                     </li>
                 </ul>
             </div>

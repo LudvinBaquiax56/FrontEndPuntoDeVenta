@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Proveedores = () => {
+export const Proveedores = () => {
   return (
-    <div>Proveedores</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Proveedores</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Proveedores

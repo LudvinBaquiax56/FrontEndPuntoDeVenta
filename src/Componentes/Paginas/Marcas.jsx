@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Marcas = () => {
+export const Marcas = () => {
   return (
-    <div>Marcas</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Marcas</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Marcas

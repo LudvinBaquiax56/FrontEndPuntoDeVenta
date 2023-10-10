@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Ventas = () => {
+export const Ventas = () => {
   return (
-    <div>Ventas</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Ventas</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Ventas

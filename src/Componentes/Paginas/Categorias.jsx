@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Categorias = () => {
+export const Categorias = () => {
   return (
-    <div>Categorias</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Categorias</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Categorias

@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Compras = () => {
+export const Compras = () => {
   return (
-    <div>Compras</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Compras</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Compras

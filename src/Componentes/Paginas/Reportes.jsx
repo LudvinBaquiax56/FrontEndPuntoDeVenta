@@ -1,9 +1,14 @@
 import React from 'react'
 
-const Reportes = () => {
+export const Reportes = () => {
   return (
-    <div>Reportes</div>
+    <main className='main-container'>
+      <div className='main-title'>
+        <h3>Reportes</h3>
+      </div>
+      <div>
+        Hola bro
+      </div>
+    </main>
   )
 }
-
-export default Reportes
