@@ -68,8 +68,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 15px 30px 0px 30px;
-  margin-bottom: 30px;
+  padding: 0px 30px 0px 30px;
 }
 
 .sidebar-title > span {
@@ -99,7 +98,6 @@ body {
 }
 
 .sidebar-list-item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
   cursor: pointer;
 }
 

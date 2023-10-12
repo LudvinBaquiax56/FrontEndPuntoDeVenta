@@ -1,0 +1,83 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    overflow: auto;
+}
+
+.center {
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+.form-box {
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    height: 80%;
+    padding: 40px;
+    overflow: hidden;
+    background-color: white;
+}
+
+.form-box h2 {
+    margin: 0 0 30px;
+    padding: 0;
+    color: #000;
+    text-align: center;
+}
+
+.form-box .user-box {
+    position: relative;
+}
+
+.form-box .user-box input {
+    width: 100%;
+    padding: 10px 0;
+    font-size: 16px;
+    color: #000;
+    margin-bottom: 30px;
+    border: none;
+    border-bottom: 1.5px solid #000;
+    outline: none;
+    background: transparent;
+}
+
+.form-box .user-box label {
+    position: absolute;
+    top: -25px;
+    left: 0;
+    padding: 10px 0;
+    color: #023e8a;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+/* CSS */
+.button-36 {
+    background-image: linear-gradient(92.88deg, #023e8a 9.16%, #0077b6 43.89%, #0096c7 64.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 500;
+    height: 3rem;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+    transition: all .5s;
+}
+
+.button-36:hover {
+    box-shadow: rgba(72, 202, 228, 0.5) 0 1px 30px;
+    transition-duration: .1s;
+}
+
+@media (min-width: 768px) {
+    .button-36 {
+        padding: 0 2.6rem;
+    }
+}
