@@ -7,7 +7,7 @@ export const Productos = () => {
         <h3>Productos</h3>
       </div>
       <div>
-        Hola bro
+        Hola Productos
       </div>
     </main>
   )
