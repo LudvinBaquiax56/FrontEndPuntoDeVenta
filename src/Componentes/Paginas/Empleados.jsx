@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
+import './forms.css'
 
 export const Empleados = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
@@ -15,46 +16,45 @@ export const Empleados = () => {
   }
 
   return (
-    <main className='main-container'>
+    <main className='form-box center main-container'>
       <div className='main-title'>
-        <h3>Empleados</h3>
+        <h2>Empleados</h2>
       </div>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div>
-            <label>Nombres</label>
-            <input type='text' {...register('nombres', { required: true })} />
+          <div className='user-box'>
+            <input name="" type='text' {...register('nombres', { required: true })} />
             {errors.nombres?.type === 'required' && alertaCampo()}
+            <label>Nombres</label>
           </div>
-          <div>
-            <label>Apellidos</label>
+          <div className='user-box'>
             <input type='text' {...register('apellidos', { required: true })} />
             {errors.apellidos?.type === 'required' && alertaCampo()}
+            <label>Apellidos</label>
           </div>
-          <div>
-            <label>Número de Identificación</label>
+          <div className='user-box'>
             <input type='text' {...register('dpi', { required: true })} />
             {errors.dpi?.type === 'required' && alertaCampo()}
+            <label>Número de Identificación</label>
           </div>
-          <div>
-            <label>Telefono</label>
+          <div className='user-box'>
             <input type='text' {...register('telefono', { required: true })} />
             {errors.telefono?.type === 'required' && alertaCampo()}
+            <label>Telefono</label>
           </div>
-          <div>
-            <label>E-mail</label>
-            <input type='text' {...register('email', { required: true }, {
+          <div className='user-box'>
+            <input type='text' {...register('email', {
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
             })} />
             {errors.email?.type === 'pattern' && alertaCorreo()}
-            {errors.email?.type === 'required' && alertaCampo()}
+            <label>E-mail</label>
           </div>
-          <div>
-            <label>Dirección</label>
+          <div className='user-box'>
             <input type='text' {...register('direccion', { required: true })} />
             {errors.direccion?.type === 'required' && alertaCampo()}
+            <label>Dirección</label>
           </div>
-          <input type='submit' value="Enviar" />
+          <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>
     </main>
