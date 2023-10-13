@@ -7,10 +7,16 @@ body {
   overflow-y: hidden;
 }
 
+div .header-left{
+  color: white;
+  font-weight: bold;
+}
+
 .icon {
   vertical-align: middle;
   line-height: 1px;
   font-size: 20px;
+  color: white;
 }
 .icon_header {
   vertical-align: middle;
@@ -90,6 +96,7 @@ body {
   padding: 5px 20px 0px 7px;
   font-size: 16px;
   font-weight: bold;
+  color: white;
 }
 
 .sidebar-list-item {
