@@ -12,13 +12,9 @@ body {
 }
 
 .form-box {
-    top: 50%;
-    left: 50%;
     width: 50%;
-    height: 80%;
     padding: 40px;
     overflow: hidden;
-    background-color: white;
 }
 
 .form-box h2 {
