@@ -1,23 +1,13 @@
 import React from 'react'
-import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import './forms.css'
 
-export const Empleados = () => {
+export const Clientes = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:3000/empleado/create', data);
-      console.log('Respuesta del servidor:', response.data);
-
-      swal("Registrado", "El empleado ha sido registrado con éxito", "success");
-
-    } catch (error) {
-      console.error('Error al enviar datos al backend:', error);
-    }
-  };
-
+  const onSubmit = (data) => {
+    console.log(data);
+  }
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
   }
@@ -28,23 +18,26 @@ export const Empleados = () => {
   return (
     <main className='form-box center main-container'>
       <div className='main-title'>
-        <h2>Empleados</h2>
+        <h2>Clientes</h2>
       </div>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='user-box'>
-            <input name='nombre' type='text' {...register('nombre', { required: true })} />
-            {errors.nombres?.type === 'required' && alertaCampo()}
+            <input name="nombre" type='text' {...register('nombre', { required: true })} />
+            {errors.nombre?.type === 'required' && alertaCampo()}
             <label>Nombres</label>
           </div>
           <div className='user-box'>
             <input name='apellido' type='text' {...register('apellido', { required: true })} />
-            {errors.apellidos?.type === 'required' && alertaCampo()}
+            {errors.apellido?.type === 'required' && alertaCampo()}
             <label>Apellidos</label>
           </div>
           <div className='user-box'>
-            <input name='dpi' type='text' {...register('dpi', { required: true })} />
-            {errors.dpi?.type === 'required' && alertaCampo()}
+            <input name='nit' type='text' {...register('nit')} />
+            <label>NIT</label>
+          </div>
+          <div className='user-box'>
+            <input name='dpi' type='text' {...register('dpi')} />
             <label>DPI</label>
           </div>
           <div className='user-box'>
