@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import './forms.css'
 
-export const Empleados = () => {
+export const AgregarUsuario = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
 
   const alertaCorreo = () => {

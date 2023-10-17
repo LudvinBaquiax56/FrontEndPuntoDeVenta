@@ -2,10 +2,17 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 
-//Iconos para el menu
-import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
-
-export const Marcas = () => {
+export const AgregarMarcas = () => {
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  }
+  const alertaCorreo = () => {
+    swal("Error", "Formato de correo no valido", "error")
+  }
+  const alertaCampo = () => {
+    swal("Error", "Campo requerido", "error")
+  }
 
   return (
     <main className='form-box center main-container'>

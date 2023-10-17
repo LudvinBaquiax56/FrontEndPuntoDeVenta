@@ -5,6 +5,7 @@ import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios } from "./Componentes/Paginas";
+import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
 
 function App() {
@@ -31,6 +32,16 @@ function App() {
         <Route path='/Reportes' element={<Reportes />}></Route>
         <Route path='/Ventas' element={<Ventas />}></Route>
         <Route path='/Usuarios' element={<Usuarios />}></Route>
+        <Route path='/AgregarMarca' element={<AgregarMarcas />}></Route>
+        <Route path='/AgregarProveedor' element={<AgregarProveedores />}></Route>
+        <Route path='/CrearAjusteInventario' element={<AgregarAjusteInventario />}></Route>
+        <Route path='/AgregarCategoria' element={<AgregarCategorias />}></Route>
+        <Route path='/AgregarCliente' element={<AgregarClientes />}></Route>
+        <Route path='/RealizarCompra' element={<AgregarCompras />}></Route>
+        <Route path='/AgregarEmpleado' element={<AgregarEmpleados />}></Route>
+        <Route path='/CrearProducto' element={<AgregarProductos />}></Route>
+        <Route path='/AgregarUsuario' element={<AgregarUsuario />}></Route>
+        <Route path='/RealizarVenta' element={<AgregarVentas />}></Route>
       </Routes>
     </div>
   );

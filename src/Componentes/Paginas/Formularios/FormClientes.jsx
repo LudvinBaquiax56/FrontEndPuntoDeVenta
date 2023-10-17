@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import './forms.css'
 
-export const Clientes = () => {
+export const AgregarClientes = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);

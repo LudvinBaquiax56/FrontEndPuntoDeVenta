@@ -4,8 +4,19 @@ import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
 import './forms.css'
 
-export const Empleados = () => {
+export const AgregarEmpleados = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:3000/empleado/create', data);
+      console.log('Respuesta del servidor:', response.data);
+
+      swal("Registrado", "El empleado ha sido registrado con éxito", "success");
+
+    } catch (error) {
+      console.error('Error al enviar datos al backend:', error);
+    }
+  };
 
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
@@ -23,12 +34,12 @@ export const Empleados = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className='user-box'>
             <input name='nombre' type='text' {...register('nombre', { required: true })} />
-            {errors.nombre?.type === 'required' && alertaCampo()}
+            {errors.nombres?.type === 'required' && alertaCampo()}
             <label>Nombres</label>
           </div>
           <div className='user-box'>
             <input name='apellido' type='text' {...register('apellido', { required: true })} />
-            {errors.apellido?.type === 'required' && alertaCampo()}
+            {errors.apellidos?.type === 'required' && alertaCampo()}
             <label>Apellidos</label>
           </div>
           <div className='user-box'>
