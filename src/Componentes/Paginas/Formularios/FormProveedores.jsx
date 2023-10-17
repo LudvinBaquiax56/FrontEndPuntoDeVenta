@@ -46,8 +46,7 @@ export const AgregarProveedores = () => {
             <label>E-mail</label>
           </div>
           <div className='user-box'>
-            <input name='direccion' type='text' {...register('direccion', { required: true })} />
-            {errors.direccion?.type === 'required' && alertaCampo()}
+            <input name='direccion' type='text' {...register('direccion')} />
             <label>Dirección</label>
           </div>
           <input className='button-36' type='submit' value="Enviar" /><br></br>

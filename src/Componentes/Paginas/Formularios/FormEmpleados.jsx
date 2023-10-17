@@ -53,7 +53,7 @@ export const AgregarEmpleados = () => {
             <label>Telefono</label>
           </div>
           <div className='user-box'>
-            <input name='email' type='text' {...register('email', {
+            <input name='email' type='text' {...register('email', { required: true,
               pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
             })} />
             {errors.email?.type === 'pattern' && alertaCorreo()}

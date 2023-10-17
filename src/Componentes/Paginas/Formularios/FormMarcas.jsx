@@ -8,9 +8,6 @@ export const AgregarMarcas = () => {
   const onSubmit = (data) => {
     console.log(data);
   }
-  const alertaCorreo = () => {
-    swal("Error", "Formato de correo no valido", "error")
-  }
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
   }
@@ -28,8 +25,7 @@ export const AgregarMarcas = () => {
             <label>Nombre</label>
           </div>
           <div className='user-box'>
-            <input name='descripcion' type='text' {...register('descripcion', { required: true })} />
-            {errors.descripcion?.type === 'required' && alertaCampo()}
+            <input name='descripcion' type='text' {...register('descripcion')} />
             <label>Descripcion</label>
           </div>
           <input className='button-36' type='submit' value="Enviar" /><br></br>

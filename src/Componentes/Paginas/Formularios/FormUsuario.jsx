@@ -32,15 +32,14 @@ export const AgregarUsuario = () => {
             <label>Contraseña</label>
           </div>
           <div className='user-box'>
-            <select {...register('id_empleado')}>
+            <select {...register('id_empleado', { required: true })}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-            </select>            
+            </select>
             {errors.id_empleado?.type === 'required' && alertaCampo()}
             <label>Empleado</label>
           </div>
-
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>

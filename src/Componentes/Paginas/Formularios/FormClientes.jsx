@@ -33,7 +33,8 @@ export const AgregarClientes = () => {
             <label>Apellidos</label>
           </div>
           <div className='user-box'>
-            <input name='nit' type='text' {...register('nit')} />
+            <input name='nit' type='text' {...register('nit', { required: true })} />
+            {errors.telefono?.type === 'required' && alertaCampo()}
             <label>NIT</label>
           </div>
           <div className='user-box'>
@@ -41,8 +42,7 @@ export const AgregarClientes = () => {
             <label>DPI</label>
           </div>
           <div className='user-box'>
-            <input name='telefono' type='text' {...register('telefono', { required: true })} />
-            {errors.telefono?.type === 'required' && alertaCampo()}
+            <input name='telefono' type='text' {...register('telefono')} />
             <label>Telefono</label>
           </div>
           <div className='user-box'>
@@ -53,8 +53,7 @@ export const AgregarClientes = () => {
             <label>E-mail</label>
           </div>
           <div className='user-box'>
-            <input name='direccion' type='text' {...register('direccion', { required: true })} />
-            {errors.direccion?.type === 'required' && alertaCampo()}
+            <input name='direccion' type='text' {...register('direccion')} />
             <label>Dirección</label>
           </div>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
