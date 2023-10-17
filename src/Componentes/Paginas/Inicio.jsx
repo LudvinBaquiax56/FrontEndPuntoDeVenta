@@ -6,6 +6,8 @@ import './forms.css'
 
 export const Inicio = () => {
   return (
-    <div>Inicio</div>
+    <main className='main-container'>
+      <img className='inicio center' src='./src/Img/supermercado.png'/>
+    </main>
   )
 }

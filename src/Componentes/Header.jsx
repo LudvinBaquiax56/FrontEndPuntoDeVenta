@@ -1,5 +1,4 @@
-import { Tab } from 'bootstrap'
-import { useState } from 'react'
+import { NavLink } from "react-router-dom"
 import { BsQuestionCircle, BsFillArrowRightSquareFill, BsPersonCircle, BsFillHouseFill, BsJustify }
   from 'react-icons/bs'
 
@@ -12,7 +11,7 @@ function Header({ OpenSidebar }) {
       <div className='header-right'>
       </div>
       <div className='header-right'>
-        <BsFillHouseFill className='icon' />
+        <NavLink to='/'><BsFillHouseFill className='icon' /></NavLink>
         <BsPersonCircle className='icon' />
         <BsFillArrowRightSquareFill className='icon' />
         <BsQuestionCircle className='icon' />

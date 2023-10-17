@@ -4,7 +4,7 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios } from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio } from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
 
@@ -21,6 +21,7 @@ function App() {
       <Header OpenSidebar={OpenSidebar} />
       <SideBar2 openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
       <Routes>
+        <Route path='/' element={<Inicio />}></Route>
         <Route path='/Clientes' element={<Clientes />}></Route>
         <Route path='/AjusteInventario' element={<AjusteInventario />}></Route>
         <Route path='/Categorias' element={<Categorias />}></Route>
