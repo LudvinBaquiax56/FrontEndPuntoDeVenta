@@ -15,7 +15,6 @@ export const AgregarAjusteInventario = () => {
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
   }
-  
   return (
     <main className='main-container'>
       <div className='main-title'>
