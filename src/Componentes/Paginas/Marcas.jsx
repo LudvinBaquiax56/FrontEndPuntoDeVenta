@@ -22,6 +22,7 @@ export const Marcas = () => {
     <main className='main-container'>
       <div className='main-title'>
         <h3>Marcas</h3>
+        <input className='button-35' type='button' value="Nuevo" /><br></br>
       </div>
       <div className='table-responsive'>
         <table className='table' >

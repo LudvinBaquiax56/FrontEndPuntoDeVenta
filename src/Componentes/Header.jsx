@@ -1,5 +1,6 @@
+import { Tab } from 'bootstrap'
 import { useState } from 'react'
-import { BsQuestionCircle, BsFillArrowRightSquareFill, BsPersonCircle, BsSearch, BsJustify }
+import { BsQuestionCircle, BsFillArrowRightSquareFill, BsPersonCircle, BsFillHouseFill, BsJustify }
   from 'react-icons/bs'
 
 function Header({ OpenSidebar }) {
@@ -8,10 +9,10 @@ function Header({ OpenSidebar }) {
       <div className='menu-icon'>
         <BsJustify className='icon' onClick={OpenSidebar} />
       </div>
-      <div className='header-left'>
-        SALES POINT
+      <div className='header-right'>
       </div>
       <div className='header-right'>
+        <BsFillHouseFill className='icon' />
         <BsPersonCircle className='icon' />
         <BsFillArrowRightSquareFill className='icon' />
         <BsQuestionCircle className='icon' />
