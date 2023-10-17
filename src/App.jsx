@@ -4,7 +4,7 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas } from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
 
 function App() {
@@ -30,6 +30,7 @@ function App() {
         <Route path='/Proveedores' element={<Proveedores />}></Route>
         <Route path='/Reportes' element={<Reportes />}></Route>
         <Route path='/Ventas' element={<Ventas />}></Route>
+        <Route path='/Usuarios' element={<Usuarios />}></Route>
       </Routes>
     </div>
   );

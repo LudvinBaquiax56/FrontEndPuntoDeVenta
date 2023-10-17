@@ -39,7 +39,7 @@ div .header-left{
   grid-template-columns: 260px 1fr 1fr 1fr;
   grid-template-rows: 0.2fr 3fr;
   grid-template-areas:
-    'sidebar header header header'
+    'header header header header'
     'sidebar main main main';
   height: 100vh;
 }
@@ -48,6 +48,7 @@ div .header-left{
 .header {
   grid-area: header;
   height: 60px;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -67,6 +68,7 @@ div .header-left{
   height: 100%;
   background-color: #000139;
   transition: all 0.5s;
+  position: fixed;
   -webkit-transition: all 0.5s;
 }
 
@@ -116,12 +118,6 @@ div .header-left{
 .sidebar-responsive {
   display: inline !important;
   position: absolute;
-  /*
-    we want the z-index of the sidebar higher so that
-    the charts are not showing over the sidebar 
-    on small screens
-  */
-  z-index: 12 !important;
 }
 
 /* End Sidebar  */
