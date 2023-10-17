@@ -1,6 +1,17 @@
 import React from 'react'
+import axios from 'axios';
+import { useForm } from 'react-hook-form';
+import swal from 'sweetalert';
+import './forms.css'
 
-export const Productos = () => {
+export const AgregarProductos = () => {
+  const { register, formState: { errors }, handleSubmit } = useForm();
+  const onSubmit = (data) => {
+    console.log(data);
+  }
+  const alertaCampo = () => {
+    swal("Error", "Campo requerido", "error")
+  }
   return (
     <main className='form-box center main-container'>
       <div className='main-title'>
@@ -19,27 +30,26 @@ export const Productos = () => {
             <label>Nombre</label>
           </div>
           <div className='user-box'>
-            <input name='descripcion' type='text' {...register('descripcion', { required: true })} />
-            {errors.descripcion?.type === 'required' && alertaCampo()}
+            <input name='descripcion' type='text' {...register('descripcion')} />
             <label>DPI</label>
           </div>
           <div className='user-box'>
-            <select {...register('id_marca')}>
+            <label>Marca</label>
+            <select {...register('id_marca', { required: true })}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-            </select>            
+            </select>
             {errors.id_marca?.type === 'required' && alertaCampo()}
-            <label>Marca</label>
           </div>
           <div className='user-box'>
-            <select {...register('id_categoria')}>
+            <label>Categoria</label>
+            <select {...register('id_categoria', {required:true})}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
-            </select>            
+            </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
-            <label>Categoria</label>
           </div>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>

@@ -1,64 +1,47 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { NavLink } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const Clientes = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  }
-  const alertaCorreo = () => {
-    swal("Error", "Formato de correo no valido", "error")
-  }
-  const alertaCampo = () => {
-    swal("Error", "Campo requerido", "error")
-  }
-
   return (
-    <main className='form-box center main-container'>
+    <main className='main-container'>
       <div className='main-title'>
-        <h2>Clientes</h2>
+        <h3>Clientes</h3>
+        <NavLink to="/AgregarCliente">
+          <input className='button-35' type='button' value="Nuevo" />
+        </NavLink>
       </div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='user-box'>
-            <input name="" type='text' {...register('nombres', { required: true })} />
-            {errors.nombres?.type === 'required' && alertaCampo()}
-            <label>Nombres</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('apellidos', { required: true })} />
-            {errors.apellidos?.type === 'required' && alertaCampo()}
-            <label>Apellidos</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('nit')} />
-            <label>NIT</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('dpi')} />
-            <label>Número de Identificación</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('telefono', { required: true })} />
-            {errors.telefono?.type === 'required' && alertaCampo()}
-            <label>Telefono</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('email', {
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-            })} />
-            {errors.email?.type === 'pattern' && alertaCorreo()}
-            <label>E-mail</label>
-          </div>
-          <div className='user-box'>
-            <input type='text' {...register('direccion', { required: true })} />
-            {errors.direccion?.type === 'required' && alertaCampo()}
-            <label>Dirección</label>
-          </div>
-          <input className='button-36' type='submit' value="Enviar" /><br></br>
-        </form>
+      <div className='table-responsive'>
+        <table className='table' >
+          <thead className='table-light'>
+            <tr>
+              <th>ID</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Nit</th>
+              <th>Telefono</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/*
+      {data.map((item) => (
+        <tr key={item.id}>
+          <td>{item.id}</td>
+          <td>{item.nombre}</td>
+                <td>{item.apellido}</td>
+                <td>{item.nit}</td>
+                <td>{item.telefono}</td>
+          <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+          <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+        </tr>
+      ))}
+      */}
+          </tbody>
+        </table>
       </div>
     </main>
   )

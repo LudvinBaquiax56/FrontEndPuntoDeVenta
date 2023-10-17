@@ -7,7 +7,7 @@ body {
   overflow-y: hidden;
 }
 
-div .header-left{
+div .header-left {
   color: white;
   font-weight: bold;
 }
@@ -18,12 +18,15 @@ div .header-left{
   font-size: 20px;
   color: white;
 }
+
 .icon_header {
   vertical-align: middle;
   line-height: 1px;
   font-size: 26px;
 }
-.icon, .icon_header {
+
+.icon,
+.icon_header {
   margin-right: 5px;
 }
 
@@ -34,6 +37,7 @@ div .header-left{
   cursor: pointer;
 }
 
+/* Para la distribuición de la pantalla */
 .grid-container {
   display: grid;
   grid-template-columns: 260px 1fr 1fr 1fr;
@@ -60,6 +64,7 @@ div .header-left{
 .menu-icon {
   display: none;
 }
+
 /* End Header  */
 
 /* Sidebar  */
@@ -79,7 +84,7 @@ div .header-left{
   padding: 0px 30px 0px 30px;
 }
 
-.sidebar-title > span {
+.sidebar-title>span {
   display: none;
 }
 
@@ -110,7 +115,7 @@ div .header-left{
   cursor: pointer;
 }
 
-.sidebar-list-item > a {
+.sidebar-list-item>a {
   text-decoration: none;
   color: #E3E3E3;
 }
@@ -122,13 +127,26 @@ div .header-left{
 
 /* End Sidebar  */
 
+/* Main container de la página de inicio */
+.main-container-inicio {
+  
+  grid-area: main;
+  overflow-y: scroll;
+  margin-top: 5%;
+  color: black;
+  background-image: url('./src/Img/supermercado.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size:60% ;
+}
 
-/* Main  */  
+/* Main  */
 .main-container {
   grid-area: main;
-  overflow-y:scroll;
+  overflow-y: scroll;
   padding: 20px 20px;
   color: black;
+  text-align: center;
 }
 
 .main-title {
@@ -173,7 +191,7 @@ div .header-left{
   justify-content: space-between;
 }
 
-.card-inner > .card_icon {
+.card-inner>.card_icon {
   font-size: 25px;
 }
 
@@ -181,7 +199,7 @@ div .header-left{
 
 
 /* Medium <= 992px */
-  
+
 @media screen and (max-width: 992px) {
   .grid-container {
     grid-template-columns: 1fr;
@@ -199,12 +217,13 @@ div .header-left{
     display: inline;
   }
 
-  .sidebar-title > span {
+  .sidebar-title>span {
     display: inline;
   }
 }
+
 /* Small <= 768px */
-  
+
 @media screen and (max-width: 768px) {
   .main-cards {
     grid-template-columns: 1fr;
@@ -232,7 +251,7 @@ div .header-left{
 .scrollbar:hover {
   height: 100%;
   width: 100%;
-  overflow-y:inherit;
+  overflow-y: inherit;
   scroll-behavior: smooth;
   overflow-x: hidden;
 }

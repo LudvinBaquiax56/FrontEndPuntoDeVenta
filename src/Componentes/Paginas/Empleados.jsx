@@ -1,71 +1,47 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
+import { NavLink } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const Empleados = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post('http://localhost:3000/empleado/create', data);
-      console.log('Respuesta del servidor:', response.data);
-
-      swal("Registrado", "El empleado ha sido registrado con éxito", "success");
-
-    } catch (error) {
-      console.error('Error al enviar datos al backend:', error);
-    }
-  };
-
-  const alertaCorreo = () => {
-    swal("Error", "Formato de correo no valido", "error")
-  }
-  const alertaCampo = () => {
-    swal("Error", "Campo requerido", "error")
-  }
-
   return (
-    <main className='form-box center main-container'>
+    <main className='main-container'>
       <div className='main-title'>
-        <h2>Empleados</h2>
+        <h3>Empleados</h3>
+        <NavLink to="/AgregarEmpleado">
+          <input className='button-35' type='button' value="Nuevo" />
+        </NavLink>
       </div>
-      <div>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <div className='user-box'>
-            <input name='nombre' type='text' {...register('nombre', { required: true })} />
-            {errors.nombres?.type === 'required' && alertaCampo()}
-            <label>Nombres</label>
-          </div>
-          <div className='user-box'>
-            <input name='apellido' type='text' {...register('apellido', { required: true })} />
-            {errors.apellidos?.type === 'required' && alertaCampo()}
-            <label>Apellidos</label>
-          </div>
-          <div className='user-box'>
-            <input name='dpi' type='text' {...register('dpi', { required: true })} />
-            {errors.dpi?.type === 'required' && alertaCampo()}
-            <label>DPI</label>
-          </div>
-          <div className='user-box'>
-            <input name='telefono' type='text' {...register('telefono', { required: true })} />
-            {errors.telefono?.type === 'required' && alertaCampo()}
-            <label>Telefono</label>
-          </div>
-          <div className='user-box'>
-            <input name='email' type='text' {...register('email', {
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-            })} />
-            {errors.email?.type === 'pattern' && alertaCorreo()}
-            <label>E-mail</label>
-          </div>
-          <div className='user-box'>
-            <input name='direccion' type='text' {...register('direccion', { required: true })} />
-            {errors.direccion?.type === 'required' && alertaCampo()}
-            <label>Dirección</label>
-          </div>
-          <input className='button-36' type='submit' value="Enviar" /><br></br>
-        </form>
+      <div className='table-responsive'>
+        <table className='table' >
+          <thead className='table-light'>
+            <tr>
+              <th>ID</th>
+              <th>Nombres</th>
+              <th>Apellidos</th>
+              <th>Telefono</th>
+              <th>E-mail</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/*
+            {data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.apellido}</td>
+                <td>{item.telefono}</td>
+                <td>{item.email}</td>
+                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+              </tr>
+            ))}
+            */}
+          </tbody>
+        </table>
       </div>
     </main>
   )
