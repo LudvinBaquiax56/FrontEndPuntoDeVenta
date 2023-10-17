@@ -34,7 +34,7 @@ export const AgregarProductos = () => {
             <label>DPI</label>
           </div>
           <div className='user-box'>
-            <label>Marca</label>
+            <label>Marca</label><br></br>
             <select {...register('id_marca', { required: true })}>
               <option value="1">1</option>
               <option value="2">2</option>
@@ -43,7 +43,7 @@ export const AgregarProductos = () => {
             {errors.id_marca?.type === 'required' && alertaCampo()}
           </div>
           <div className='user-box'>
-            <label>Categoria</label>
+            <label>Categoria</label><br></br>
             <select {...register('id_categoria', {required:true})}>
               <option value="1">1</option>
               <option value="2">2</option>

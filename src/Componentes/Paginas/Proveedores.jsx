@@ -9,11 +9,37 @@ export const Proveedores = () => {
     <main className='main-container'>
       <div className='main-title'>
         <h3>Proveedores</h3>
-      </div>
-      <div>
         <NavLink to="/AgregarProveedor">
           <input className='button-35' type='button' value="Nuevo" />
         </NavLink>
+      </div>
+      <div className='table-responsive'>
+        <table className='table' >
+          <thead className='table-light'>
+            <tr>
+              <th>ID</th>
+              <th>Nombres</th>
+              <th>Nit</th>
+              <th>Telefono</th>
+              <th>Editar</th>
+              <th>Eliminar</th>
+            </tr>
+          </thead>
+          <tbody>
+            {/*
+      {data.map((item) => (
+        <tr key={item.id}>
+          <td>{item.id}</td>
+          <td>{item.nombre}</td>
+                <td>{item.nit}</td>
+                <td>{item.telefono}</td>
+          <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+          <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+        </tr>
+      ))}
+      */}
+          </tbody>
+        </table>
       </div>
     </main>
   )
