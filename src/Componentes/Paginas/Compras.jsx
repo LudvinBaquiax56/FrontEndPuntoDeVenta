@@ -1,4 +1,8 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { NavLink } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
+import './forms.css'
 
 export const Compras = () => {
   return (
@@ -7,7 +11,9 @@ export const Compras = () => {
         <h3>Compras</h3>
       </div>
       <div>
-        Hola bro
+        <NavLink to="/RealizarCompra">
+          <input className='button-35' type='button' value="Nuevo" />
+        </NavLink>
       </div>
     </main>
   )

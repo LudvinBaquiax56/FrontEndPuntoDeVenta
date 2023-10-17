@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
+import { useForm } from "react-hook-form";
 
 export const AgregarMarcas = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link, NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
+import './forms.css'
 
 //Iconos para el menu
 import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'

@@ -1,27 +1,19 @@
-import React from 'react'
-import { useForm } from 'react-hook-form';
-import swal from 'sweetalert';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { NavLink } from "react-router-dom"
+import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const Clientes = () => {
-  const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  }
-  const alertaCorreo = () => {
-    swal("Error", "Formato de correo no valido", "error")
-  }
-  const alertaCampo = () => {
-    swal("Error", "Campo requerido", "error")
-  }
-
   return (
     <main className='main-container'>
       <div className='main-title'>
         <h3>Clientes</h3>
       </div>
       <div>
-        Hola bro
+        <NavLink to="/AgregarCliente">
+          <input className='button-35' type='button' value="Nuevo" />
+        </NavLink>
       </div>
     </main>
   )

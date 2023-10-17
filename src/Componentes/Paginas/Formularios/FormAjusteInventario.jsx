@@ -22,7 +22,7 @@ export const AgregarAjusteInventario = () => {
         <h3>AjusteInventario</h3>
       </div>
       <div>
-        Hola bro
+        Crear
       </div>
     </main>
   )
