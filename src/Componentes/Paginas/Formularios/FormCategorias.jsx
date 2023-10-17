@@ -12,7 +12,6 @@ export const AgregarCategorias = () => {
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
   }
-  
   return (
     <main className='form-box center main-container'>
       <div className='main-title'>
