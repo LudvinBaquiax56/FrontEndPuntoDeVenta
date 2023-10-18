@@ -35,7 +35,7 @@ export const Clientes = () => {
                 <td>{item.apellido}</td>
                 <td>{item.nit}</td>
                 <td>{item.telefono}</td>
-          <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+          <td><NavLink to='/EditarCliente'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
           <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
         </tr>
       ))}

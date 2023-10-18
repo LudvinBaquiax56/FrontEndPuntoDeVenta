@@ -45,7 +45,7 @@ export const Marcas = () => {
                 <td>{item.id}</td>
                 <td>{item.nombre}</td>
                 <td>{item.descripcion}</td>
-                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+                <td><NavLink to='/EditarMarca'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
                 <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}

@@ -1,3 +1,4 @@
+/* Paginas principales */
 export * from "./Empleados"
 export * from "./AjusteInventario"
 export * from "./Categorias"
@@ -11,6 +12,8 @@ export * from "./Proveedores"
 export * from "./Reportes"
 export * from "./Ventas"
 export * from "./Usuarios"
+
+/* Formularios para crear nuevo registro */
 export * from "./Formularios/FormMarcas"
 export * from "./Formularios/FormProveedores"
 export * from "./Formularios/FormAjusteInventario"
@@ -21,3 +24,13 @@ export * from "./Formularios/FormEmpleados"
 export * from "./Formularios/FormProductos"
 export * from "./Formularios/FormUsuario"
 export * from "./Formularios/FormVentas"
+
+/* Formularios para editar registros */
+export * from "./FormulariosUpdate/EditarMarcas"
+export * from "./FormulariosUpdate/EditarProveedores"
+export * from "./FormulariosUpdate/EditarCategorias"
+export * from "./FormulariosUpdate/EditarClientes"
+export * from "./FormulariosUpdate/EditarEmpleados"
+export * from "./FormulariosUpdate/EditarProductos"
+export * from "./FormulariosUpdate/EditarUsuario"
+
