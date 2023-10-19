@@ -6,9 +6,20 @@ import './forms.css'
 
 export const AgregarProveedores = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:3000/proveedor/create', data);
+      console.log('Respuesta del servidor:', response.data);
+
+      swal("Registrado", "El proveedor ha sido registrada con éxito", "success");
+
+    } catch (error) {
+      swal("Error", "Error", "error")
+      console.error('Error al enviar datos al backend:', error);
+    }
+  };
+
+
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
   }

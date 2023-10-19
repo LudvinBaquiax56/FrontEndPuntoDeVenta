@@ -3,8 +3,22 @@ import axios from 'axios';
 import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
+import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
 
 export const Categorias = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/categoria/find')
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        console.error('Error al obtener datos de la API:', error);
+        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
+      });
+  }, []);
+
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -25,17 +39,15 @@ export const Categorias = () => {
             </tr>
           </thead>
           <tbody>
-            {/*
-      {data.map((item) => (
-        <tr key={item.id}>
-          <td>{item.id}</td>
-          <td>{item.nombre}</td>
-          <td>{item.descripcion}</td>
-          <td><NavLink to='/EditarCategoria'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
-          <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
-        </tr>
-      ))}
-      */}
+            {data.map((item) => (
+              <tr key={item.id}>
+                <td>{item.id}</td>
+                <td>{item.nombre}</td>
+                <td>{item.descripcion}</td>
+                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
