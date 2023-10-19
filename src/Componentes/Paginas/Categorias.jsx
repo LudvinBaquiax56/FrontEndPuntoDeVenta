@@ -31,7 +31,7 @@ export const Categorias = () => {
           <td>{item.id}</td>
           <td>{item.nombre}</td>
           <td>{item.descripcion}</td>
-          <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+          <td><NavLink to='/EditarCategoria'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
           <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
         </tr>
       ))}

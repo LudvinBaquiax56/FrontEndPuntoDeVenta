@@ -4,8 +4,9 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio } from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio} from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
+import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
       <Header OpenSidebar={OpenSidebar} />
       <SideBar2 openSidebarToggle={openSidebarToggle} OpenSidebar={OpenSidebar} />
       <Routes>
+        {/*Paginas principales*/}
         <Route path='/' element={<Inicio />}></Route>
         <Route path='/Clientes' element={<Clientes />}></Route>
         <Route path='/AjusteInventario' element={<AjusteInventario />}></Route>
@@ -33,6 +35,8 @@ function App() {
         <Route path='/Reportes' element={<Reportes />}></Route>
         <Route path='/Ventas' element={<Ventas />}></Route>
         <Route path='/Usuarios' element={<Usuarios />}></Route>
+
+        {/*Formularios para agregar*/}
         <Route path='/AgregarMarca' element={<AgregarMarcas />}></Route>
         <Route path='/AgregarProveedor' element={<AgregarProveedores />}></Route>
         <Route path='/CrearAjusteInventario' element={<AgregarAjusteInventario />}></Route>
@@ -43,6 +47,15 @@ function App() {
         <Route path='/CrearProducto' element={<AgregarProductos />}></Route>
         <Route path='/AgregarUsuario' element={<AgregarUsuario />}></Route>
         <Route path='/RealizarVenta' element={<AgregarVentas />}></Route>
+
+        {/*Formularios para editar*/}
+        <Route path='/EditarMarca' element={<EditarMarcas />}></Route>
+        <Route path='/EditarProveedor' element={<EditarProveedores />}></Route>
+        <Route path='/EditarCategoria' element={<EditarCategorias />}></Route>
+        <Route path='/EditarCliente' element={<EditarClientes />}></Route>
+        <Route path='/EditarEmpleado' element={<EditarEmpleados />}></Route>
+        <Route path='/EditarProducto' element={<EditarProductos />}></Route>
+        <Route path='/EditarUsuario' element={<EditarUsuario />}></Route>
       </Routes>
     </div>
   );

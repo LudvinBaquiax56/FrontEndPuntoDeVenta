@@ -35,7 +35,7 @@ export const Empleados = () => {
                 <td>{item.apellido}</td>
                 <td>{item.telefono}</td>
                 <td>{item.email}</td>
-                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+                <td><NavLink to='/EditarEmpleado'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
                 <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}

@@ -33,7 +33,7 @@ export const Productos = () => {
           <td>{item.nombre}</td>
                 <td>{item.marca}</td>
                 <td>{item.categoria}</td>
-          <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+          <td><NavLink to='/EditarProducto'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
           <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
         </tr>
       ))}
