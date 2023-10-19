@@ -3,8 +3,21 @@ import axios from 'axios';
 import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
+import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
 
 export const Empleados = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    axios.get('http://localhost:3000/empleado/find')
+      .then((response) => {
+        setData(response.data);
+      })
+      .catch((error) => {
+        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
+        console.error('Error al obtener datos de la API:', error);
+      });
+  }, []);
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -27,7 +40,6 @@ export const Empleados = () => {
             </tr>
           </thead>
           <tbody>
-            {/*
             {data.map((item) => (
               <tr key={item.id}>
                 <td>{item.id}</td>
@@ -39,7 +51,6 @@ export const Empleados = () => {
                 <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}
-            */}
           </tbody>
         </table>
       </div>

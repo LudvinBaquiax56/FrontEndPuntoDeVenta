@@ -6,6 +6,7 @@ import './forms.css'
 
 //Iconos para el menu
 import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
+import swal from 'sweetalert';
 
 export const Marcas = () => {
   const [data, setData] = useState([]);
@@ -17,6 +18,8 @@ export const Marcas = () => {
       })
       .catch((error) => {
         console.error('Error al obtener datos de la API:', error);
+        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
+
       });
   }, []);
 

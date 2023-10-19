@@ -1,13 +1,25 @@
-import React from 'react'
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import './forms.css'
+import './forms.css';
+import axios from 'axios';
 
 export const AgregarClientes = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+  const onSubmit = async (data) => {
+    try {
+      console.log(data);
+      const response = await axios.post('http://localhost:3000/cliente/create', data);
+      console.log('Respuesta del servidor:', response.data);
+
+      swal("Registrado", "El Cliente ha sido registrado con éxito", "success");
+
+    } catch (error) {
+      console.error('Error al enviar datos al backend:', error);
+      swal("Error", "Error", "error")
+    }
+  };
+
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
   }
