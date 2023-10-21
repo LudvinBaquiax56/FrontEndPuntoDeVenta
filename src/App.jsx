@@ -4,7 +4,7 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio} from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio } from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
 import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
@@ -49,13 +49,13 @@ function App() {
         <Route path='/RealizarVenta' element={<AgregarVentas />}></Route>
 
         {/*Formularios para editar*/}
-        <Route path='/EditarMarca' element={<EditarMarcas />}></Route>
-        <Route path='/EditarProveedor' element={<EditarProveedores />}></Route>
-        <Route path='/EditarCategoria' element={<EditarCategorias />}></Route>
-        <Route path='/EditarCliente' element={<EditarClientes />}></Route>
-        <Route path='/EditarEmpleado' element={<EditarEmpleados />}></Route>
-        <Route path='/EditarProducto' element={<EditarProductos />}></Route>
-        <Route path='/EditarUsuario' element={<EditarUsuario />}></Route>
+        <Route path='/EditarMarca/:id' element={<EditarMarcas />}></Route>
+        <Route path='/EditarProveedor/:id' element={<EditarProveedores />}></Route>
+        <Route path='/EditarCategoria/:id' element={<EditarCategorias />}></Route>
+        <Route path='/EditarCliente/:id' element={<EditarClientes />}></Route>
+        <Route path='/EditarEmpleado/:id' element={<EditarEmpleados />}></Route>
+        <Route path='/EditarProducto/:id' element={<EditarProductos />}></Route>
+        <Route path='/EditarUsuario/:id' element={<EditarUsuario />}></Route>
       </Routes>
     </div>
   );
