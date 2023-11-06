@@ -6,9 +6,8 @@ import './forms.css'
 
 export const AgregarUsuario = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-
-  const alertaCorreo = () => {
-    swal("Error", "Formato de correo no valido", "error")
+  const onSubmit = (data) => {
+    console.log(data);
   }
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
@@ -40,6 +39,7 @@ export const AgregarUsuario = () => {
             {errors.id_empleado?.type === 'required' && alertaCampo()}
             <label>Empleado</label>
           </div>
+          <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>
