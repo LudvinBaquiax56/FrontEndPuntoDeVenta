@@ -49,13 +49,13 @@ function App() {
         <Route path='/RealizarVenta' element={<AgregarVentas />}></Route>
 
         {/*Formularios para editar*/}
-        <Route path='/EditarMarca' element={<EditarMarcas />}></Route>
-        <Route path='/EditarProveedor' element={<EditarProveedores />}></Route>
-        <Route path='/EditarCategoria' element={<EditarCategorias />}></Route>
-        <Route path='/EditarCliente' element={<EditarClientes />}></Route>
-        <Route path='/EditarEmpleado' element={<EditarEmpleados />}></Route>
-        <Route path='/EditarProducto' element={<EditarProductos />}></Route>
-        <Route path='/EditarUsuario' element={<EditarUsuario />}></Route>
+        <Route path='/EditarMarca/:id' element={<EditarMarcas />}></Route>
+        <Route path='/EditarProveedor/:id' element={<EditarProveedores />}></Route>
+        <Route path='/EditarCategoria/:id' element={<EditarCategorias />}></Route>
+        <Route path='/EditarCliente/:id' element={<EditarClientes />}></Route>
+        <Route path='/EditarEmpleado/:id' element={<EditarEmpleados />}></Route>
+        <Route path='/EditarProducto/:id' element={<EditarProductos />}></Route>
+        <Route path='/EditarUsuario/:id' element={<EditarUsuario />}></Route>
 
         {/*Formularios para Reportes*/}
         <Route path='/Reportes/ProductosVendidos' element={<ProductosVendidos />}></Route>
@@ -63,6 +63,7 @@ function App() {
         <Route path='/Reportes/ComprasPorCliente' element={<ComprasPorCliente />}></Route>
         <Route path='/Reportes/ComprasPorPeriodo' element={<ComprasPorPeriodo />}></Route>
         <Route path='/Reportes/VentasPorPeriodo' element={<VentasPorPeriodo />}></Route>
+
       </Routes>
     </div>
   );
