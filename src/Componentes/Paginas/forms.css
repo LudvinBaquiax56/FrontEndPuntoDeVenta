@@ -50,34 +50,6 @@ body {
     font-weight: bold;
 }
 
-/* Boton de Enviar */
-.button-36 {
-    background-image: linear-gradient(92.88deg, #023e8a 9.16%, #0077b6 43.89%, #0096c7 64.72%);
-    border-radius: 8px;
-    border-style: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    flex-shrink: 0;
-    font-size: 16px;
-    font-weight: 500;
-    height: 3rem;
-    padding: 0 1.6rem;
-    text-align: center;
-    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
-    transition: all .5s;
-}
-
-.button-36:hover {
-    box-shadow: rgba(72, 202, 228, 0.5) 0 1px 30px;
-    transition-duration: .1s;
-}
-
-@media (min-width: 768px) {
-    .button-36 {
-        padding: 0 2.6rem;
-    }
-}
-
 /* Boton para agregar */
 .button-35 {
     background-image: linear-gradient(92.88deg, #023e8a 9.16%, #0077b6 43.89%, #0096c7 64.72%);
@@ -86,13 +58,34 @@ body {
     box-sizing: border-box;
     color: #FFFFFF;
     flex-shrink: 0;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 500;
-    height: 2rem;
-    width: 10rem;
+    height: 90%;
+    width: auto;
     padding: 0 1.6rem;
     text-align: center;
     text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+}
+
+.button-37 {
+    background-image: linear-gradient(92.88deg, #023e8a 9.16%, #0077b6 43.89%, #0096c7 64.72%);
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    flex-shrink: 0;
+    font-size: 16px;
+    font-weight: 500;
+    height: auto;
+    width: auto;
+    padding: 0 1.6rem;
+    text-align: center;
+    text-shadow: rgba(0, 0, 0, 0.25) 0 3px 8px;
+}
+
+label{
+    font-weight: bold;
+    color: #023e8a;
 }
 
 @media (min-width: 768px) {

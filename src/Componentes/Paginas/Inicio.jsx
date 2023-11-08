@@ -7,6 +7,13 @@ import './forms.css'
 export const Inicio = () => {
   return (
     <main className='main-container-inicio'>
+      <div className='main-cards'>
+        <div className='card'>
+          <h3>ALERTA</h3>
+          Productos con baja existencia
+          <h1>30</h1>
+        </div>
+      </div>
     </main>
   )
 }

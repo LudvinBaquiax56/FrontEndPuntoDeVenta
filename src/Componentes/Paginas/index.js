@@ -40,3 +40,11 @@ export * from "./FormulariosUpdate/EditarUsuario"
 export * from "./FormulariosUpdate/EditarSucursal"
 export * from "./FormulariosUpdate/EditarRol"
 
+/* Formularios para visualizar reportes */
+export * from "./Reportes/ProductosVendidos"
+export * from "./Reportes/ClientesMasCompras"
+export * from "./Reportes/ComprasCliente"
+export * from "./Reportes/ComprasPeriodo"
+export * from "./Reportes/VentasPeriodo"
+/*export * from "./Reportes/EditarUsuario"*/
+
