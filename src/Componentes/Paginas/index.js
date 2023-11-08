@@ -34,3 +34,11 @@ export * from "./FormulariosUpdate/EditarEmpleados"
 export * from "./FormulariosUpdate/EditarProductos"
 export * from "./FormulariosUpdate/EditarUsuario"
 
+/* Formularios para visualizar reportes */
+export * from "./Reportes/ProductosVendidos"
+export * from "./Reportes/ClientesMasCompras"
+export * from "./Reportes/ComprasCliente"
+/*export * from "./Reportes/EditarEmpleados"
+export * from "./Reportes/EditarProductos"
+export * from "./Reportes/EditarUsuario"*/
+
