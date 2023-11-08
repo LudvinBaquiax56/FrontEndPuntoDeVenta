@@ -8,11 +8,11 @@ import './forms.css'
 import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
 import swal from 'sweetalert';
 
-export const Marcas = () => {
+export const Roles = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/marca/find')
+    axios.get('http://localhost:3000/rol/find')
       .then((response) => {
         setData(response.data);
       })
@@ -26,8 +26,8 @@ export const Marcas = () => {
   return (
     <main className='main-container'>
       <div className='main-title'>
-        <h3>Marcas</h3>
-        <NavLink to="/AgregarMarca">
+        <h3>Roles</h3>
+        <NavLink to="/AgregarRol">
           <input className='button-35' type='button' value="Nuevo" />
         </NavLink>
       </div>
@@ -37,7 +37,6 @@ export const Marcas = () => {
             <tr>
               <th>ID</th>
               <th>Nombre</th>
-              <th>Descripcion</th>
               <th>Editar</th>
             </tr>
           </thead>
@@ -46,8 +45,7 @@ export const Marcas = () => {
               <tr key={item.id}>
                 <td>{item.id}</td>
                 <td>{item.nombre}</td>
-                <td>{item.descripcion}</td>
-                <td><NavLink to={`/EditarMarca/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
+                <td><NavLink to={`/EditarRol/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
               </tr>
             ))}
           </tbody>
