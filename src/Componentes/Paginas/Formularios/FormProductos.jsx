@@ -1,14 +1,38 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
-import './forms.css'
+import './forms.css';
 
 export const AgregarProductos = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-  const onSubmit = (data) => {
-    console.log(data);
-  }
+
+  const [marcas, setMarcas] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    // Realiza una solicitud HTTP para obtener las opciones de "Marca" y "Categoría" desde el servidor.
+    axios.get('http://localhost:3000/marca/find')
+      .then((response) => setMarcas(response.data))
+      .catch((error) => console.error('Error al obtener las marcas', error));
+
+    axios.get('http://localhost:3000/categoria/find')
+      .then((response) => setCategorias(response.data))
+      .catch((error) => console.error('Error al obtener las categorías', error));
+  }, []);
+
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post('http://localhost:3000/producto/create', data);
+      console.log('Respuesta del servidor:', response.data);
+
+      swal("Registrado", "La marca ha sido registrada con éxito", "success");
+
+    } catch (error) {
+      swal("Error", "Error", "error")
+      console.error('Error al enviar datos al backend:', error);
+    }
+  };
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
   }
@@ -31,23 +55,27 @@ export const AgregarProductos = () => {
           </div>
           <div className='user-box'>
             <input name='descripcion' type='text' {...register('descripcion')} />
-            <label>DPI</label>
+            <label>Descripcion</label>
           </div>
           <div className='user-box'>
             <label>Marca</label><br></br>
             <select {...register('id_marca', { required: true })}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+              {marcas.map((marca) => (
+                <option key={marca.id} value={marca.id}>
+                  {marca.nombre}
+                </option>
+              ))}
             </select>
             {errors.id_marca?.type === 'required' && alertaCampo()}
           </div>
           <div className='user-box'>
             <label>Categoria</label><br></br>
-            <select {...register('id_categoria', {required:true})}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select {...register('id_categoria', { required: true })}>
+              {categorias.map((categoria) => (
+                <option key={categoria.id} value={categoria.id}>
+                  {categoria.nombre}
+                </option>
+              ))}
             </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
           </div>

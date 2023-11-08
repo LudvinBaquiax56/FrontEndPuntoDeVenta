@@ -35,6 +35,8 @@ function App() {
         <Route path='/Reportes' element={<Reportes />}></Route>
         <Route path='/Ventas' element={<Ventas />}></Route>
         <Route path='/Usuarios' element={<Usuarios />}></Route>
+        <Route path='/Sucursales' element={<Sucursales />}></Route>
+        <Route path='/Roles' element={<Roles />}></Route>
 
         {/*Formularios para agregar*/}
         <Route path='/AgregarMarca' element={<AgregarMarcas />}></Route>
@@ -47,6 +49,8 @@ function App() {
         <Route path='/CrearProducto' element={<AgregarProductos />}></Route>
         <Route path='/AgregarUsuario' element={<AgregarUsuario />}></Route>
         <Route path='/RealizarVenta' element={<AgregarVentas />}></Route>
+        <Route path='/AgregarSucursal' element={<AgregarSucursal />}></Route>
+        <Route path='/AgregarRol' element={<AgregarRoles />}></Route>
 
         {/*Formularios para editar*/}
         <Route path='/EditarMarca/:id' element={<EditarMarcas />}></Route>
@@ -56,6 +60,8 @@ function App() {
         <Route path='/EditarEmpleado/:id' element={<EditarEmpleados />}></Route>
         <Route path='/EditarProducto/:id' element={<EditarProductos />}></Route>
         <Route path='/EditarUsuario/:id' element={<EditarUsuario />}></Route>
+        <Route path='/EditarSucursal/:id' element={<EditarSucursal />}></Route>
+        <Route path='/EditarRol/:id' element={<EditarRol />}></Route>
 
         {/*Formularios para Reportes*/}
         <Route path='/Reportes/ProductosVendidos' element={<ProductosVendidos />}></Route>

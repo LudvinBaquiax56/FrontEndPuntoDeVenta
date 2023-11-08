@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Link, NavLink } from "react-router-dom"
 
 //Iconos para el menu
-import { BsFillCartFill, BsFillClipboard2DataFill, BsFillPersonVcardFill, BsFillGrid3X3GapFill, BsListCheck, BsFillPersonFill, BsShopWindow, BsReceiptCutoff, BsPersonFillAdd, BsFillBasket3Fill } from 'react-icons/bs'
+import { BsFillCartFill, BsFillClipboard2DataFill, BsFillPersonVcardFill, BsFillGrid3X3GapFill, BsListCheck, BsFillPersonFill, BsShopWindow, BsReceiptCutoff, BsPersonFillAdd, BsFillBasket3Fill, } from 'react-icons/bs'
 
 function SideBar2({ openSidebarToggle, OpenSidebar }) {
     return (
@@ -13,6 +13,13 @@ function SideBar2({ openSidebarToggle, OpenSidebar }) {
 
             <div className="scrollbar" id="style-1">
                 <ul className='sidebar-list'>
+                    <li className='sidebar-list-title'>
+                        SUCURSALES
+                    </li>
+                    <li className='sidebar-list-item'>
+                        <NavLink to="/Sucursales"><BsPersonFillAdd className='icon' /> Sucursales</NavLink>
+                    </li>
+
                     <li className='sidebar-list-title'>
                         VENTAS
                     </li>
@@ -55,6 +62,9 @@ function SideBar2({ openSidebarToggle, OpenSidebar }) {
                     </li>
                     <li className='sidebar-list-item'>
                         <NavLink to="/Usuarios"><BsFillPersonFill className='icon' /> Usuarios</NavLink>
+                    </li>
+                    <li className='sidebar-list-item'>
+                        <NavLink to="/Roles"><BsPersonFillAdd className='icon' /> Roles</NavLink>
                     </li>
                     <li className='sidebar-list-item'>
                         <NavLink to="/Reportes"><BsFillClipboard2DataFill className='icon' /> Reportes</NavLink>
