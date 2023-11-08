@@ -18,6 +18,7 @@ export const Empleados = () => {
         console.error('Error al obtener datos de la API:', error);
       });
   }, []);
+
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -47,7 +48,7 @@ export const Empleados = () => {
                 <td>{item.apellido}</td>
                 <td>{item.telefono}</td>
                 <td>{item.email}</td>
-                <td><NavLink to='/EditarEmpleado'><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
+                <td><NavLink to={`/EditarEmpleado/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
                 <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}

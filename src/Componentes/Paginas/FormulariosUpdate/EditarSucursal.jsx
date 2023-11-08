@@ -5,35 +5,32 @@ import { useParams } from 'react-router-dom';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-export const EditarProveedores = () => {
+export const EditarSucursal = () => {
   const { id } = useParams();
-  const [nit, setNit] = useState('');
+
+  const [numero, setNumero] = useState('');
   const [nombre, setNombre] = useState('');
   const [telefono, setTelefono] = useState('');
-  const [email, setEmail] = useState('');
-  const [direccion, setDireccion] = useState('');
+  const [ubicacion, setUbicacion] = useState('');
 
-  const [nitOriginal, setNitOriginal] = useState('');
+  const [numeroOriginal, setNumeroOrignal] = useState('');
   const [nombreOriginal, setNombreOriginal] = useState('');
   const [telefonoOriginal, setTelefonoOriginal] = useState('');
-  const [emailOriginal, setEmailOriginal] = useState('');
-  const [direccionOriginal, setDireccionOriginal] = useState('');
+  const [ubicacionOriginal, setUbicacionOriginal] = useState('');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/proveedor/findById/${id}`);
-        setNit(response.data.nit);
+        const response = await axios.get(`http://localhost:3000/sucursal/findById/${id}`);
+        setNumero(response.data.no_sucursal)
         setNombre(response.data.nombre);
         setTelefono(response.data.telefono);
-        setEmail(response.data.email);
-        setDireccion(response.data.direccion);
+        setUbicacion(response.data.ubicacion);
 
-        setNitOriginal(response.data.nit);
+        setNumeroOrignal(response.data.no_sucursal)
         setNombreOriginal(response.data.nombre);
         setTelefonoOriginal(response.data.telefono);
-        setEmailOriginal(response.data.email);
-        setDireccionOriginal(response.data.direccion);
+        setUbicacionOriginal(response.data.ubicacion);
       } catch (error) {
         swal("Error", "Error", "error");
         console.error('Error en el servidor', error);
@@ -47,16 +44,15 @@ export const EditarProveedores = () => {
     try {
       const datosActualizados = {
         id: id,
-        nit: data.nit !== "" ? data.nit : nitOriginal,
+        no_sucursal: data.no_sucursal !== "" ? data.no_sucursal : numeroOriginal,
         nombre: data.nombre !== "" ? data.nombre : nombreOriginal,
         telefono: data.telefono !== "" ? data.telefono : telefonoOriginal,
-        email: data.email !== "" ? data.email : emailOriginal,
-        direccion: data.direccion !== "" ? data.direccion : direccionOriginal,
+        ubicacion: data.ubicacion !== "" ? data.ubicacion : ubicacionOriginal,
         estado: 1
       };
       console.log(datosActualizados)
 
-      const response = await axios.put('http://localhost:3000/proveedor/update', datosActualizados);
+      const response = await axios.put('http://localhost:3000/sucursal/update', datosActualizados);
       console.log('Respuesta del servidor:', response.data);
       swal("Actualizado", "La marca ha sido actualizada con éxito", "success");
     } catch (error) {
@@ -64,16 +60,18 @@ export const EditarProveedores = () => {
       console.error('Error al enviar datos al backend:', error);
     }
   };
+
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
   }
   const alertaCampo = () => {
     swal("Error", "Campo requerido", "error")
   }
+
   return (
     <main className='form-box center main-container'>
       <div className='main-title'>
-        <h2>Proveedores</h2>
+        <h2>Sucursales</h2>
       </div>
       <div>
         <form onSubmit={handleSubmit(onSubmit)}>
@@ -83,24 +81,17 @@ export const EditarProveedores = () => {
             <label>Nombres</label>
           </div>
           <div className='user-box'>
-            <input name='nit' type='text' {...register('nit')} value={nit} onChange={(e) => setNit(e.target.value)} />
-            {errors.telefono?.type === 'required' && alertaCampo('Nit')}
-            <label>NIT</label>
+            <input name='no_sucursal' type='text' {...register('no_sucursal')} value={numero} onChange={(e) => setNumero(e.target.value)} />
+            {errors.nit?.type === 'required' && alertaCampo()}
+            <label>Numero Sucursal</label>
           </div>
           <div className='user-box'>
             <input name='telefono' type='text' {...register('telefono')} value={telefono} onChange={(e) => setTelefono(e.target.value)} />
             <label>Telefono</label>
           </div>
           <div className='user-box'>
-            <input name='email' type='text' {...register('email', {
-              pattern: /^[^\s@]+@[^\s@]+\.[^\s@]+$/i
-            })} value={email} onChange={(e) => setEmail(e.target.value)} />
-            {errors.email?.type === 'pattern' && alertaCorreo()}
-            <label>E-mail</label>
-          </div>
-          <div className='user-box'>
-            <input name='direccion' type='text' {...register('direccion')} value={direccion} onChange={(e) => setDireccion(e.target.value)} />
-            <label>Dirección</label>
+            <input name='ubicacion' type='text' {...register('ubicacion')} value={ubicacion} onChange={(e) => setUbicacion(e.target.value)} />
+            <label>Ubicacion</label>
           </div>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>

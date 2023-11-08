@@ -3,7 +3,6 @@ import axios from 'axios';
 import { NavLink } from "react-router-dom"
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
-//Iconos para el menu
 import { BsFillTrashFill, BsFillPencilFill } from 'react-icons/bs'
 
 export const Proveedores = () => {
@@ -48,7 +47,7 @@ export const Proveedores = () => {
                 <td>{item.nombre}</td>
                 <td>{item.nit}</td>
                 <td>{item.telefono}</td>
-                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
+                <td><NavLink to={`/EditarProveedor/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
                 <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}

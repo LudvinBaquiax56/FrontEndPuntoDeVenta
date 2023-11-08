@@ -36,8 +36,8 @@ export const Clientes = () => {
               <th>Apellidos</th>
               <th>Nit</th>
               <th>Telefono</th>
+              <th>Puntos</th>
               <th>Editar</th>
-              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
@@ -48,8 +48,8 @@ export const Clientes = () => {
                 <td>{item.apellido}</td>
                 <td>{item.nit}</td>
                 <td>{item.telefono}</td>
-                <td><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></td>
-                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+                <td>{item.puntos_privilegio}</td>
+                <td><NavLink to={`/EditarCliente/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
               </tr>
             ))
             }
