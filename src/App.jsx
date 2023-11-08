@@ -4,12 +4,10 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio, ClientesMasCompras} from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio, ClientesMasCompras, VentasPorPeriodo} from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
-import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario } from "./Componentes/Paginas";
+import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario, ProductosVendidos, ComprasPorCliente, ComprasPorPeriodo } from "./Componentes/Paginas";
 import { Clientes } from "./Componentes/Paginas";
-import { ProductosVendidos } from "./Componentes/Paginas/Reportes/ProductosVendidos";
-import { ComprasPorCliente } from "./Componentes/Paginas/Reportes/ComprasCliente";
 
 function App() {
   //Constantes para desplegar menu
@@ -63,6 +61,8 @@ function App() {
         <Route path='/Reportes/ProductosVendidos' element={<ProductosVendidos />}></Route>
         <Route path='/Reportes/ComprasClientes' element={<ClientesMasCompras />}></Route>
         <Route path='/Reportes/ComprasPorCliente' element={<ComprasPorCliente />}></Route>
+        <Route path='/Reportes/ComprasPorPeriodo' element={<ComprasPorPeriodo />}></Route>
+        <Route path='/Reportes/VentasPorPeriodo' element={<VentasPorPeriodo />}></Route>
       </Routes>
     </div>
   );

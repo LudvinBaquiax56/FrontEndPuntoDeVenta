@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
-export const ComprasPorCliente = () => {
+export const ComprasPorPeriodo = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -22,12 +22,17 @@ export const ComprasPorCliente = () => {
       <div className='main-title'>
         <div>
           <br></br>
-          <h3>Ventas por Clientes</h3>
+          <h3>Compras por Periodo</h3>
         </div>
         <div>
-          <label for='cliente'>Cliente</label>
+          <label for='desde'>Desde</label>
           <br></br>
-          <input name='cliente' id='cliente' type='text'/>
+          <input type='date' id='desde' name='desde'></input>
+        </div>
+        <div>
+          <label for='hasta'>Hasta</label>
+          <br></br>
+          <input type='date' id='hasta' name='hasta'></input>
         </div>
         <div>
           <br></br>
@@ -39,11 +44,9 @@ export const ComprasPorCliente = () => {
         <table className='table' >
           <thead className='table-light'>
             <tr>
-              <th>NIT</th>
-              <th>Cliente</th>
               <th>Producto</th>
               <th>Cantidad</th>
-              <th>Precio</th>
+              <th>Costo</th>
               <th>Subtotal</th>
               <th>Fecha</th>
             </tr>

@@ -23,12 +23,19 @@ export const Reportes = () => {
         </NavLink>
         <NavLink className='link' to="/Reportes/ComprasPorCliente">
           <div className='card'>
-            <h4>Compras por <br></br> Cliente</h4>
+            <h4>Ventas por <br></br> Cliente</h4>
           </div>
         </NavLink>
-        <div className='card'>
-          <h4>Ventas</h4>
-        </div>
+        <NavLink className='link' to="/Reportes/ComprasPorPeriodo">
+          <div className='card'>
+            <h4>Compras <br></br>por periodo</h4>
+          </div>
+        </NavLink>
+        <NavLink className='link' to="/Reportes/VentasPorPeriodo">
+          <div className='card'>
+            <h4>Ventas<br></br>por periodo</h4>
+          </div>
+        </NavLink>
         <div className='card'>
           <h4>Existencia de productos (Sucursal)</h4>
         </div>  

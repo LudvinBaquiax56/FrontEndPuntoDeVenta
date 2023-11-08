@@ -38,7 +38,7 @@ export * from "./FormulariosUpdate/EditarUsuario"
 export * from "./Reportes/ProductosVendidos"
 export * from "./Reportes/ClientesMasCompras"
 export * from "./Reportes/ComprasCliente"
-/*export * from "./Reportes/EditarEmpleados"
-export * from "./Reportes/EditarProductos"
-export * from "./Reportes/EditarUsuario"*/
+export * from "./Reportes/ComprasPeriodo"
+export * from "./Reportes/VentasPeriodo"
+/*export * from "./Reportes/EditarUsuario"*/
 
