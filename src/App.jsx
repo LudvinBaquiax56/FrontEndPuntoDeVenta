@@ -7,7 +7,7 @@ import { Routes, Route } from "react-router-dom";
 import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio, ClientesMasCompras, VentasPorPeriodo} from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
 import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario, ProductosVendidos, ComprasPorCliente, ComprasPorPeriodo } from "./Componentes/Paginas";
-import { Clientes } from "./Componentes/Paginas";
+import { Clientes, Sucursales, Roles, AgregarSucursal, AgregarRoles, EditarSucursal, EditarRol } from "./Componentes/Paginas";
 
 function App() {
   //Constantes para desplegar menu
