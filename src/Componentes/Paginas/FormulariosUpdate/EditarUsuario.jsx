@@ -6,7 +6,9 @@ import './forms.css'
 
 export const EditarUsuario = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
-
+  const onSubmit = (data) => {
+    console.log(data);
+  }
   const alertaCorreo = () => {
     swal("Error", "Formato de correo no valido", "error")
   }
