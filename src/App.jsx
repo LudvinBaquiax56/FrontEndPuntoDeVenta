@@ -9,6 +9,7 @@ import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCate
 import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario, ProductosVendidos, ComprasPorCliente, ComprasPorPeriodo } from "./Componentes/Paginas";
 import { Clientes, Sucursales, Roles, AgregarSucursal, AgregarRoles, EditarSucursal, EditarRol } from "./Componentes/Paginas";
 
+
 function App() {
   //Constantes para desplegar menu
   const [openSidebarToggle, setOpenSidebarToggle] = useState(false)
