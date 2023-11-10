@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
-export const ClientesMasCompras = () => {
+export const ExistenciaProductos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -22,12 +22,17 @@ export const ClientesMasCompras = () => {
       <div className='main-title'>
         <div>
           <br></br>
-          <h3>Compras de Clientes</h3>
+          <h3>Existencia de Productos</h3>
         </div>
         <div>
-          <label for='hasta'>Filtro</label>
-          <br></br>
-          <select>
+        <label for='id_sucursal'>Sucursal</label>
+        <br></br>
+          <input id='id_sucursal' name='id_sucursal' type='text'/>
+        </div>
+        <div>
+        <label for='filtro'>Filtro</label>
+        <br></br>
+          <select name='filtro' id='filtro'>
             <option value="masVendidos">Por sucursal</option>
             <option value="menosVendidos">General</option>
           </select>

@@ -46,5 +46,5 @@ export * from "./Reportes/ClientesMasCompras"
 export * from "./Reportes/ComprasCliente"
 export * from "./Reportes/ComprasPeriodo"
 export * from "./Reportes/VentasPeriodo"
-/*export * from "./Reportes/EditarUsuario"*/
+export * from "./Reportes/ExistenciaProductos"
 
