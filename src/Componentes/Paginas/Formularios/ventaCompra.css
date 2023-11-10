@@ -1,0 +1,41 @@
+
+table.encabezado, table.pie {
+    width: 100%;
+}
+
+table.encabezado td.posicion-derecha {
+    text-align: right;
+}
+
+table.pie td.posicion-derecha {
+    text-align: right;
+}
+
+table.encabezado td.columna-izquierda {
+    width: 60%;
+}
+
+table.pie td.columna-izquierda {
+    width: 60%;
+}
+
+table.encabezado td input.elementos-izquierda {
+    width:100%;
+}
+
+table.encabezado td input.elementos-derecha {
+    width:40%;
+}
+
+table.tabla-productos{
+    width: 100%;
+}
+
+table.encabezado td input.elementos-derecha {
+    width:40%;
+}
+
+
+div.centrar{
+    justify-content: center;
+}
