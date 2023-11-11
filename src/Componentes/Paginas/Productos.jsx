@@ -63,7 +63,7 @@ export const Productos = () => {
                 <td>{item.id_marca}</td>
                 <td>{item.id_categoria}</td>
                 <td><NavLink to={`/EditarProducto/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
-                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+                <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}
           </tbody>

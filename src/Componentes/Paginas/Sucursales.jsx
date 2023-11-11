@@ -61,7 +61,7 @@ export const Sucursales = () => {
                 <td>{item.ubicacion}</td>
                 <td>{item.telefono}</td>
                 <td><NavLink to={`/EditarSucursal/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
-                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+                <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}
           </tbody>

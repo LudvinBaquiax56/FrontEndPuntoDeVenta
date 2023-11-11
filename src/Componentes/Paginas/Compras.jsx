@@ -19,18 +19,6 @@ export const Compras = () => {
       });
   }, []);
 
-  const handleClick = async (id) => {
-    try {
-      const response = await axios.put(`http://localhost:3000/compra/delete/${id}`);
-      console.log('Respuesta del servidor:', response.data);
-      swal("Actualizado", "El dato ha sido eliminado con éxito", "success");
-      window.location.reload();
-    } catch (error) {
-      console.error('Error al eliminar el proveedor:', error);
-      swal("Error", "Se produjo un error al eliminar el dato", "error");
-    }
-  }
-
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -57,7 +45,7 @@ export const Compras = () => {
                 <td>{item.fecha}</td>
                 <td>{item.total}</td>
                 <td><NavLink to={`/VerCompra/${item.id}`}><button type="button" class="btn btn-info"><BsFillFileEarmarkFill className='icon' /></button></NavLink></td>
-              </tr>
+                </tr>
             ))
             }
           </tbody>
