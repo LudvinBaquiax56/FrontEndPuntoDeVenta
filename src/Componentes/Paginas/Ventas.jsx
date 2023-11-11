@@ -19,6 +19,20 @@ export const Ventas = () => {
         swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
       });
   }, []);
+}
+
+const handleClick = async (id) => {
+  try {
+    const response = await axios.put(`http://localhost:3000/factura/delete/${id}`);
+    console.log('Respuesta del servidor:', response.data);
+    swal("Actualizado", "El dato ha sido eliminado con éxito", "success");
+    window.location.reload();
+  } catch (error) {
+    console.error('Error al eliminar el proveedor:', error);
+    swal("Error", "Se produjo un error al eliminar el dato", "error");
+  }
+}
+
   return (
     <main className='main-container'>
       <div className='main-title'>
