@@ -19,6 +19,18 @@ export const Clientes = () => {
       });
   }, []);
 
+  const handleClick = async (id) => {
+    try {
+      const response = await axios.put(`http://localhost:3000/cliente/delete/${id}`);
+      console.log('Respuesta del servidor:', response.data);
+      swal("Actualizado", "El dato ha sido eliminado con éxito", "success");
+      window.location.reload();
+    } catch (error) {
+      console.error('Error al eliminar el proveedor:', error);
+      swal("Error", "Se produjo un error al eliminar el dato", "error");
+    }
+  }
+
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -50,6 +62,7 @@ export const Clientes = () => {
                 <td>{item.telefono}</td>
                 <td>{item.puntos_privilegio}</td>
                 <td><NavLink to={`/EditarCliente/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
+                <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))
             }
