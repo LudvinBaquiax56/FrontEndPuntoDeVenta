@@ -7,6 +7,11 @@ export const AgregarVentas = () => {
   const [data, setData] = useState([{ id_producto: "", codigo: "", producto: "", descripcion: "", precio: "", costo: "", cantidad: "", subtotal: "" }])
 
   const [nit, setNit] = useState('');
+  const [sucursal, setSucursal] = useState('');
+  const [id_usuario, setUsuario] = useState('');
+  const [descuento, setDescuento] = useState('');
+  const [no_factura, setFactura] = useState('');
+
   const [datosCliente, setCliente] = useState({
     nombre: '',
     id_cliente: '',
@@ -15,9 +20,13 @@ export const AgregarVentas = () => {
   const handleChangeNit = (event) => {
     const nuevoNit = event.target.value;
     setNit(nuevoNit);
-    handleBuscarPorNit(nuevoNit);
   };
-  const handleBuscarPorNit = useCallback(async () => {
+
+  const handleChangeDescuento = (event) => {
+    const nuevoDescuento = event.target.value;
+    setDescuento(nuevoDescuento);
+  }
+  const handleBuscarPorNit = async () => {
     try {
       const response = await axios.get(`http://localhost:3000/cliente/findnit/${nit}`);
       console.log(response.data);
@@ -25,11 +34,18 @@ export const AgregarVentas = () => {
         nombre: response.data.nombre,
         id_cliente: response.data.id,
       };
-      setCliente(datosObtenidos);
+      setCliente(prevState => ({
+        ...prevState,
+        ...datosObtenidos,
+      }));
+      console.log(datosCliente)
     } catch (error) {
       console.error('Error al buscar por NIT:', error);
     }
-  }, [nit]);
+  };
+
+
+
   const handleClick = () => {
     setData([...data, { id_producto: "", codigo: "", producto: "", descripcion: "", precio: "", costo: "", cantidad: "", subtotal: "" }])
     console.log(data)
@@ -46,8 +62,44 @@ export const AgregarVentas = () => {
     setData(deleteVal)
   }
 
-  const enviarDatos = () => {
-    console.log(data)
+  const enviarDatos = async () => {
+    setSucursal(1)
+    setUsuario(1)
+    setFactura(213)
+    console.log(datosCliente)
+    const jsonNit = JSON.stringify({ id_cliente: datosCliente.id_cliente.toString() });
+    const nitObject = JSON.parse(jsonNit);
+
+    const jsonSucursal = JSON.stringify({ id_sucursal: sucursal.toString() });
+    const sucursalObject = JSON.parse(jsonSucursal);
+
+    const jsonUsuario = JSON.stringify({ id_usuario: id_usuario.toString() })
+    const usuarioObject = JSON.parse(jsonUsuario)
+
+    const jsonDescuento = JSON.stringify({ descuento: descuento.toString() })
+    const descuentoObjec = JSON.parse(jsonDescuento)
+
+    const jsonFactura = JSON.stringify({ no_factura: no_factura.toString() })
+    const facturaObject = JSON.parse(jsonFactura)
+
+    const datosCombinados = { ...nitObject, ...sucursalObject, ...usuarioObject, ...descuentoObjec, ...facturaObject };
+
+    console.log(datosCombinados);
+
+
+
+    try {
+      console.log(datosCombinados);
+      const response = await axios.post('http://localhost:3000/factura/create', datosCombinados);
+      console.log('Respuesta del servidor:', response.data);
+
+      swal("Registrado", "La venta ha sido realizda con éxito", "success");
+
+    } catch (error) {
+      console.error('Error al enviar datos al backend:', error);
+      swal("Error", "Error", "error")
+    }
+
   }
 
   return (
@@ -77,7 +129,8 @@ export const AgregarVentas = () => {
           <tr>
             <td className="columna-izquierda">
               <label for='nit'>NIT</label><br></br>
-              <input className="elementos-izquierda" id="nit" name="nit" type='text' value={nit} onChange={handleChangeNit} />
+              <input className="elementos-izquierda" id="nit" name="nit" type='text' onChange={handleChangeNit} />
+              <button className="button-35" onClick={handleBuscarPorNit}>Buscar Cliente</button>
             </td>
             <td className="posicion-derecha">
               <label for='sucursal'>Sucursal &emsp;</label>
@@ -88,8 +141,12 @@ export const AgregarVentas = () => {
           <tr>
             <td className="columna-izquierda">
               <label for='cliente'>Cliente</label><br></br>
-              <input className="elementos-izquierda" id="cliente" name="cliente" type='text' disabled />
-              <input type="hidden" id="id_cliente" name="id_cliente"></input>
+              {datosCliente && (
+                <div>
+                  <input className="elementos-izquierda" id="cliente" name="cliente" type='text' disabled value={datosCliente.nombre} />
+                  <input type="hidden" id="id_cliente" name="id_cliente" value={datosCliente.id_cliente}></input>
+                </div>
+              )}
             </td>
             <td className="posicion-derecha">
               <label>Vendedor&emsp;</label>
@@ -140,7 +197,7 @@ export const AgregarVentas = () => {
           <td className="columna-izquierda"></td>
           <td className="posicion-derecha">
             <label for="descuento">Descuento (%)&emsp;</label>
-            <input id="descuento" name="descuento" type='number' />
+            <input onChange={handleChangeDescuento} id="descuento" name="descuento" type='number' />
           </td>
         </tr>
         <tr>
