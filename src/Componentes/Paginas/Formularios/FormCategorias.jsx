@@ -11,8 +11,13 @@ export const AgregarCategorias = () => {
       const response = await axios.post('http://localhost:3000/categoria/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "La marca ha sido registrada con éxito", "success");
-
+      swal({
+        title: "Registrado",
+        text: "La categoria ha sido registrada con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Categorias";
+      });
     } catch (error) {
       swal("Error", "Error", "error")
       console.error('Error al enviar datos al backend:', error);

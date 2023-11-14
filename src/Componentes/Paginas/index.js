@@ -47,4 +47,4 @@ export * from "./Reportes/ComprasCliente"
 export * from "./Reportes/ComprasPeriodo"
 export * from "./Reportes/VentasPeriodo"
 export * from "./Reportes/ExistenciaProductos"
-
+export * from "./Reportes/ProductosExistenciaBaja"
