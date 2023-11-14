@@ -11,7 +11,13 @@ export const AgregarEmpleados = () => {
       const response = await axios.post('http://localhost:3000/empleado/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "El empleado ha sido registrado con éxito", "success");
+      swal({
+        title: "Registrado",
+        text: "El empleado ha sido registrado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Empleados";
+      });
 
     } catch (error) {
       console.error('Error al enviar datos al backend:', error);

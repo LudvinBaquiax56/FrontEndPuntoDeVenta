@@ -3,11 +3,11 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
-export const ClientesMasCompras = () => {
+export const ProductosExistenciaBaja = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/categoria/find')
+    axios.get('http://localhost:3000/productos/ExistenciaMenor20')
       .then((response) => {
         setData(response.data);
       })
@@ -22,19 +22,10 @@ export const ClientesMasCompras = () => {
       <div className='main-title'>
         <div>
           <br></br>
-          <h3>Compras de Clientes</h3>
-        </div>
-        <div>
-          <label for='hasta'>Filtro</label>
-          <br></br>
-          <select>
-            <option value="masVendidos">Por sucursal</option>
-            <option value="menosVendidos">General</option>
-          </select>
+          <h3>Productos con baja existencia</h3>
         </div>
         <div>
           <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
         </div>
       </div>
       <br></br>
@@ -44,19 +35,18 @@ export const ClientesMasCompras = () => {
             <tr>
               <th>Código</th>
               <th>Nombre</th>
-              <th>Total vendido</th>
-              <th>Fecha</th>
+              <th>Existencia</th>
             </tr>
           </thead>
           <tbody>
-            {/*data.map((item) => (
+            {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.productos.codigo}</td>
-                <td>{item.productos.nombre}</td>
-                <td>{item.TotalVendido}</td>
-                <td>{item.facturas.fecha}</td>
+                <td>{item.Codigo}</td>
+                <td>{item.Producto}</td>
+                <td>{item.Existencia}</td>
               </tr>
-            ))*/}
+            ))
+            }
           </tbody>
         </table>
       </div>

@@ -19,6 +19,19 @@ export const Proveedores = () => {
       });
   }, []);
 
+  const handleClick = async (id) => {
+    try {
+      const response = await axios.put(`http://localhost:3000/proveedor/delete/${id}`);
+      console.log('Respuesta del servidor:', response.data);
+      swal("Actualizado", "El proveedor ha sido eliminado con éxito", "success");
+      window.location.reload();
+    } catch (error) {
+      console.error('Error al eliminar el proveedor:', error);
+      swal("Error", "Se produjo un error al eliminar el proveedor", "error");
+    }
+  }
+  
+
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -48,7 +61,8 @@ export const Proveedores = () => {
                 <td>{item.nit}</td>
                 <td>{item.telefono}</td>
                 <td><NavLink to={`/EditarProveedor/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
-                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+                <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+
               </tr>
             ))}
           </tbody>

@@ -3,29 +3,26 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
-export const ProductosVendidos = () => {
-  const defaultFechaInicio = '2023-01-01'; // Fechas determinadas de inicio y fin 
-  const defaultFechaFin = '2023-12-31'
-  const [selectedOption, setSelectedOption] = useState('masVendidos');
-  const [fechaInicio, setFechaInicio] = useState(defaultFechaInicio);
-  const [fechaFin, setFechaFin] = useState(defaultFechaFin);
+export const ExistenciaProductos = () => {
+  const [selectedOption, setSelectedOption] = useState('general');
   const [data, setData] = useState([]);
+  const [idSucursal, setIdSucursal] = useState('1');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let endpoint = '';
         let response;
-
+        const finalIdSucursal = idSucursal || '1';//Si el valor del input de id sucursal es nulo entonces que el valor se mantenga en 1
         // Determina la ruta dependiendo de la opcion activa en el select
         switch (selectedOption) {
-          case 'masVendidos':
-            endpoint = `http://localhost:3000/productos/MasVendidos/${fechaInicio},${fechaFin}`;
+          case 'general':
+            endpoint = 'http://localhost:3000/productos/ExistenciaGeneral';
             response = await axios.get(endpoint);
-            setData(response.data[0]);
+            setData(response.data);
             break;
-          case 'menosVendidos':
-            endpoint = `http://localhost:3000/productos/MenosVendidos/${fechaInicio},${fechaFin}`;
+          case 'sucursal':
+            endpoint = `http://localhost:3000/productos/ExistenciaSucursal/${finalIdSucursal}`;
             response = await axios.get(endpoint);
             setData(response.data[0]);
             break;
@@ -42,14 +39,10 @@ export const ProductosVendidos = () => {
     };
 
     fetchData();
-  }, [selectedOption]); // Trigger the effect whenever the selectedOption changes
+  }, [selectedOption, idSucursal]); // Trigger the effect whenever the selectedOption changes
 
-  const handleFechaInicioChange = (e) => {
-    setFechaInicio(e.target.value);
-  };
-
-  const handleFechaFinChange = (e) => {
-    setFechaFin(e.target.value);
+  const handleInputChange = (e) => {
+    setIdSucursal(e.target.value);
   };
 
   return (
@@ -57,26 +50,23 @@ export const ProductosVendidos = () => {
       <div className='main-title'>
         <div>
           <br></br>
-          <h3>Productos Vendidos</h3>
+          <h3>Existencia de Productos</h3>
         </div>
-
         <div>
-          <label>Desde</label>
+          <label>Sucursal</label>
           <br></br>
-          <input onChange={handleFechaInicioChange} value={fechaInicio || defaultFechaInicio} type='date' id='desde' name='desde'></input>
+          <input id='id_sucursal' name='id_sucursal' type='text' value={idSucursal} onChange={handleInputChange} />
         </div>
         <div>
-          <label>Hasta</label>
+          <label>Filtro</label>
           <br></br>
-          <input onChange={handleFechaFinChange} value={fechaFin || defaultFechaFin} type='date' id='hasta' name='hasta'></input>
-        </div>
-        <div>
-        <label>Filtro</label>
-        <br></br>
           <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
-            <option value="masVendidos">Más vendidos</option>
-            <option value="menosVendidos">Menos vendidos</option>
+            <option value="general">General</option>
+            <option value="sucursal">Por sucursal</option>
           </select>
+        </div>
+        <div>
+          <br></br>
         </div>
       </div>
       <br></br>
@@ -86,8 +76,7 @@ export const ProductosVendidos = () => {
             <tr>
               <th>Código</th>
               <th>Nombre</th>
-              <th>Total vendido</th>
-              <th>Fecha</th>
+              <th>Existencia</th>
             </tr>
           </thead>
           <tbody>
@@ -95,10 +84,10 @@ export const ProductosVendidos = () => {
               <tr key={item.id}>
                 <td>{item.Codigo}</td>
                 <td>{item.Producto}</td>
-                <td>{item.TotalVendido}</td>
-                <td>{item.Fecha}</td>
+                <td>{item.Existencia}</td>
               </tr>
-            ))}
+            ))
+            }
           </tbody>
         </table>
       </div>

@@ -45,7 +45,7 @@ export const Compras = () => {
                 <td>{item.fecha}</td>
                 <td>{item.total}</td>
                 <td><NavLink to={`/VerCompra/${item.id}`}><button type="button" class="btn btn-info"><BsFillFileEarmarkFill className='icon' /></button></NavLink></td>
-              </tr>
+                </tr>
             ))
             }
           </tbody>

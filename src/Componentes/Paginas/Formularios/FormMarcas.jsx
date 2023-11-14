@@ -11,8 +11,13 @@ export const AgregarMarcas = () => {
       const response = await axios.post('http://localhost:3000/marca/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "La marca ha sido registrada con éxito", "success");
-
+      swal({
+        title: "Registrado",
+        text: "La marca ha sido registrada con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Marcas";
+      });
     } catch (error) {
       swal("Error", "Error", "error")
       console.error('Error al enviar datos al backend:', error);

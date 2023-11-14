@@ -16,11 +16,6 @@ export const Reportes = () => {
             <h4>Productos <br></br> Vendidos</h4>
           </div>
         </NavLink>
-        <NavLink className='link' to="/Reportes/ComprasClientes">
-          <div className='card'>
-            <h4>Clientes con más compras</h4>
-          </div>
-        </NavLink>
         <NavLink className='link' to="/Reportes/ComprasPorCliente">
           <div className='card'>
             <h4>Ventas por <br></br> Cliente</h4>
@@ -36,14 +31,16 @@ export const Reportes = () => {
             <h4>Ventas<br></br>por periodo</h4>
           </div>
         </NavLink>
-        <div className='card'>
-          <h4>Existencia de productos (Sucursal)</h4>
-        </div>  
-      </div>
-      <div className='main-cards'>
-        <div className='card'>
-          <h4>Existencia de productos (General)</h4>
-        </div>
+        <NavLink className='link' to="/Reportes/ExistenciaProductos">
+          <div className='card'>
+            <h4>Existencia<br></br>de Productos</h4>
+          </div>
+        </NavLink>
+        <NavLink className='link' to="/Reportes/ProductosExistenciaBaja">
+          <div className='card'>
+            <h4>Productos con existencia baja</h4>
+          </div>
+        </NavLink>
       </div>
     </main>
   )
