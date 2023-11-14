@@ -4,10 +4,41 @@ import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const ExistenciaProductos = () => {
+  const [selectedOption, setSelectedOption] = useState('general');
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/categoria/find')
+    const fetchData = async () => {
+      try {
+        let endpoint = '';
+
+        // Determine the endpoint based on the selected option
+        switch (selectedOption) {
+          case 'general':
+            endpoint = 'http://localhost:3000/productos/ExistenciaGeneral';
+            break;
+          case 'sucursal':
+            endpoint = 'http://localhost:3000/productos/ExistenciaSucursal/2';
+            break;
+          // Add more cases as needed
+
+          default:
+            break;
+        }
+
+        const response = await axios.get(endpoint);
+        setData(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error
+      }
+    };
+
+    fetchData();
+  }, [selectedOption]); // Trigger the effect whenever the selectedOption changes
+  
+  /*useEffect(() => {
+    axios.get('http://localhost:3000/productos/ExistenciaGeneral')
       .then((response) => {
         setData(response.data);
       })
@@ -17,6 +48,17 @@ export const ExistenciaProductos = () => {
       });
   }, []);
 
+  useEffect(() => {
+    axios.get('http://localhost:3000/productos/ExistenciaSucursal/2')
+      .then((response) => {
+        setData2(response.data);
+      })
+      .catch((error) => {
+        console.error('Error al obtener datos de la API:', error);
+        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
+      });
+  }, []); */
+
   return (
     <main className='main-container'>
       <div className='main-title'>
@@ -25,21 +67,20 @@ export const ExistenciaProductos = () => {
           <h3>Existencia de Productos</h3>
         </div>
         <div>
-        <label for='id_sucursal'>Sucursal</label>
-        <br></br>
-          <input id='id_sucursal' name='id_sucursal' type='text'/>
+          <label>Sucursal</label>
+          <br></br>
+          <input id='id_sucursal' name='id_sucursal' type='text' />
         </div>
         <div>
-        <label for='filtro'>Filtro</label>
-        <br></br>
-          <select name='filtro' id='filtro'>
-            <option value="masVendidos">Por sucursal</option>
-            <option value="menosVendidos">General</option>
+          <label>Filtro</label>
+          <br></br>
+          <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
+            <option value="general">General</option>
+            <option value="sucursal">Por sucursal</option>
           </select>
         </div>
         <div>
           <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
         </div>
       </div>
       <br></br>
@@ -49,19 +90,18 @@ export const ExistenciaProductos = () => {
             <tr>
               <th>Código</th>
               <th>Nombre</th>
-              <th>Total vendido</th>
-              <th>Fecha</th>
+              <th>Existencia</th>
             </tr>
           </thead>
           <tbody>
-            {/*data.map((item) => (
+            {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.productos.codigo}</td>
-                <td>{item.productos.nombre}</td>
-                <td>{item.TotalVendido}</td>
-                <td>{item.facturas.fecha}</td>
+                <td>{item.codigo}</td>
+                <td>{item.nombre}</td>
+                <td>{item.TotalExistencia}</td>
               </tr>
-            ))*/}
+            ))
+            }
           </tbody>
         </table>
       </div>

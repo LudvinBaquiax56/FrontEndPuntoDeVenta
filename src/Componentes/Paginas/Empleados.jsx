@@ -27,8 +27,9 @@ export const Empleados = () => {
           <input className='button-35' type='button' value="Nuevo" />
         </NavLink>
       </div>
+      <br></br>
       <div className='table-responsive'>
-        <table className='table' >
+        <table name="empleados" id="empleados" className='table' >
           <thead className='table-light'>
             <tr>
               <th>ID</th>
