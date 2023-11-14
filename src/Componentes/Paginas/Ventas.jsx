@@ -10,7 +10,7 @@ export const Ventas = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/cliente/find')
+    axios.get('http://localhost:3000/ventas/Ventas')
       .then((response) => {
         setData(response.data);
       })
