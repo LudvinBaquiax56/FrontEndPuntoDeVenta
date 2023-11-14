@@ -12,7 +12,7 @@ export const Productos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/producto/find')
+    axios.get('http://localhost:3000/productos/General')
       .then((response) => {
         setData(response.data);
       })
@@ -58,10 +58,10 @@ export const Productos = () => {
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.codigo}</td>
-                <td>{item.nombre}</td>
-                <td>{item.id_marca}</td>
-                <td>{item.id_categoria}</td>
+                <td>{item.Codigo}</td>
+                <td>{item.Nombre}</td>
+                <td>{item.Marca}</td>
+                <td>{item.Categoria}</td>
                 <td><NavLink to={`/EditarProducto/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
                 <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
