@@ -41,6 +41,11 @@ export const Reportes = () => {
             <h4>Existencia<br></br>de Productos</h4>
           </div>
         </NavLink>
+        <NavLink className='link' to="/Reportes/ProductosExistenciaBaja">
+          <div className='card'>
+            <h4>Productos con existencia baja</h4>
+          </div>
+        </NavLink>
       </div>
     </main>
   )

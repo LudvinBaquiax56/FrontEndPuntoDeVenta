@@ -4,18 +4,53 @@ import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const ProductosVendidos = () => {
+  const defaultFechaInicio = '2023-01-01'; // Fechas determinadas de inicio y fin 
+  const defaultFechaFin = '2023-12-31'
+  const [selectedOption, setSelectedOption] = useState('masVendidos');
+  const [fechaInicio, setFechaInicio] = useState(defaultFechaInicio);
+  const [fechaFin, setFechaFin] = useState(defaultFechaFin);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/categoria/find')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos de la API:', error);
-        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        let endpoint = '';
+        let response;
+
+        // Determina la ruta dependiendo de la opcion activa en el select
+        switch (selectedOption) {
+          case 'masVendidos':
+            endpoint = `http://localhost:3000/productos/MasVendidos/${fechaInicio},${fechaFin}`;
+            response = await axios.get(endpoint);
+            setData(response.data[0]);
+            break;
+          case 'menosVendidos':
+            endpoint = `http://localhost:3000/productos/MenosVendidos/${fechaInicio},${fechaFin}`;
+            response = await axios.get(endpoint);
+            setData(response.data[0]);
+            break;
+
+          default:
+            break;
+        }
+
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error
+      }
+    };
+
+    fetchData();
+  }, [selectedOption]); // Trigger the effect whenever the selectedOption changes
+
+  const handleFechaInicioChange = (e) => {
+    setFechaInicio(e.target.value);
+  };
+
+  const handleFechaFinChange = (e) => {
+    setFechaFin(e.target.value);
+  };
 
   return (
     <main className='main-container'>
@@ -26,26 +61,22 @@ export const ProductosVendidos = () => {
         </div>
 
         <div>
-          <label for='desde'>Desde</label>
+          <label>Desde</label>
           <br></br>
-          <input type='date' id='desde' name='desde'></input>
+          <input onChange={handleFechaInicioChange} value={fechaInicio || defaultFechaInicio} type='date' id='desde' name='desde'></input>
         </div>
         <div>
-          <label for='hasta'>Hasta</label>
+          <label>Hasta</label>
           <br></br>
-          <input type='date' id='hasta' name='hasta'></input>
+          <input onChange={handleFechaFinChange} value={fechaFin || defaultFechaFin} type='date' id='hasta' name='hasta'></input>
         </div>
         <div>
-        <label for='filtro'>Filtro</label>
+        <label>Filtro</label>
         <br></br>
-          <select name='filtro' id='filtro'>
+          <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
             <option value="masVendidos">Más vendidos</option>
             <option value="menosVendidos">Menos vendidos</option>
           </select>
-        </div>
-        <div>
-          <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
         </div>
       </div>
       <br></br>
@@ -60,14 +91,14 @@ export const ProductosVendidos = () => {
             </tr>
           </thead>
           <tbody>
-            {/*data.map((item) => (
+            {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.productos.codigo}</td>
-                <td>{item.productos.nombre}</td>
+                <td>{item.Codigo}</td>
+                <td>{item.Producto}</td>
                 <td>{item.TotalVendido}</td>
-                <td>{item.facturas.fecha}</td>
+                <td>{item.Fecha}</td>
               </tr>
-            ))*/}
+            ))}
           </tbody>
         </table>
       </div>

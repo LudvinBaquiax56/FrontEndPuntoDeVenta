@@ -6,28 +6,32 @@ import './forms.css'
 export const ExistenciaProductos = () => {
   const [selectedOption, setSelectedOption] = useState('general');
   const [data, setData] = useState([]);
+  const [idSucursal, setIdSucursal] = useState('1');
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         let endpoint = '';
-
-        // Determine the endpoint based on the selected option
+        let response;
+        const finalIdSucursal = idSucursal || '1';//Si el valor del input de id sucursal es nulo entonces que el valor se mantenga en 1
+        // Determina la ruta dependiendo de la opcion activa en el select
         switch (selectedOption) {
           case 'general':
             endpoint = 'http://localhost:3000/productos/ExistenciaGeneral';
+            response = await axios.get(endpoint);
+            setData(response.data);
             break;
           case 'sucursal':
-            endpoint = 'http://localhost:3000/productos/ExistenciaSucursal/2';
+            endpoint = `http://localhost:3000/productos/ExistenciaSucursal/${finalIdSucursal}`;
+            response = await axios.get(endpoint);
+            setData(response.data[0]);
             break;
-          // Add more cases as needed
 
           default:
             break;
         }
 
-        const response = await axios.get(endpoint);
-        setData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.error('Error fetching data:', error);
         // Handle error
@@ -35,29 +39,11 @@ export const ExistenciaProductos = () => {
     };
 
     fetchData();
-  }, [selectedOption]); // Trigger the effect whenever the selectedOption changes
-  
-  /*useEffect(() => {
-    axios.get('http://localhost:3000/productos/ExistenciaGeneral')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos de la API:', error);
-        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
-      });
-  }, []);
+  }, [selectedOption, idSucursal]); // Trigger the effect whenever the selectedOption changes
 
-  useEffect(() => {
-    axios.get('http://localhost:3000/productos/ExistenciaSucursal/2')
-      .then((response) => {
-        setData2(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos de la API:', error);
-        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
-      });
-  }, []); */
+  const handleInputChange = (e) => {
+    setIdSucursal(e.target.value);
+  };
 
   return (
     <main className='main-container'>
@@ -69,7 +55,7 @@ export const ExistenciaProductos = () => {
         <div>
           <label>Sucursal</label>
           <br></br>
-          <input id='id_sucursal' name='id_sucursal' type='text' />
+          <input id='id_sucursal' name='id_sucursal' type='text' value={idSucursal} onChange={handleInputChange} />
         </div>
         <div>
           <label>Filtro</label>
@@ -96,9 +82,9 @@ export const ExistenciaProductos = () => {
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.codigo}</td>
-                <td>{item.nombre}</td>
-                <td>{item.TotalExistencia}</td>
+                <td>{item.Codigo}</td>
+                <td>{item.Producto}</td>
+                <td>{item.Existencia}</td>
               </tr>
             ))
             }
