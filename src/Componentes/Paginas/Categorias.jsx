@@ -39,8 +39,9 @@ export const Categorias = () => {
           <input className='button-35' type='button' value="Nuevo" />
         </NavLink>
       </div>
+      <br></br>
       <div className='table-responsive'>
-        <table className='table' >
+        <table name="categorias" id="categorias" className='table' >
           <thead className='table-light'>
             <tr>
               <th>ID</th>

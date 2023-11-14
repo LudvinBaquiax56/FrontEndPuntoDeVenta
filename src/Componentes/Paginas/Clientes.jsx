@@ -32,15 +32,16 @@ export const Clientes = () => {
   }
 
   return (
-    <main className='main-container'>
+    <main className='main-container container'>
       <div className='main-title'>
         <h3>Clientes</h3>
         <NavLink to="/AgregarCliente">
           <input className='button-35' type='button' value="Nuevo" />
         </NavLink>
       </div>
+      <br></br>
       <div className='table-responsive'>
-        <table className='table' >
+        <table name="clientes" id="clientes" className='table' >
           <thead className='table-light'>
             <tr>
               <th>ID</th>

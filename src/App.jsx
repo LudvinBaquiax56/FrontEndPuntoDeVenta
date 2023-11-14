@@ -4,7 +4,7 @@ import Home from "./Componentes/Home";
 import Header from "./Componentes/Header";
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
-import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio, ClientesMasCompras, VentasPorPeriodo} from "./Componentes/Paginas";
+import { Empleados, AjusteInventario, Categorias, Compras, Marcas, Productos, Proveedores, Reportes, Ventas, Usuarios, Inicio, ClientesMasCompras, VentasPorPeriodo, ExistenciaProductos} from "./Componentes/Paginas";
 import { AgregarMarcas, AgregarProveedores, AgregarAjusteInventario, AgregarCategorias, AgregarClientes, AgregarCompras, AgregarEmpleados, AgregarProductos, AgregarVentas, AgregarUsuario } from "./Componentes/Paginas";
 import { EditarMarcas, EditarProveedores, EditarCategorias, EditarClientes, EditarEmpleados, EditarProductos, EditarUsuario, ProductosVendidos, ComprasPorCliente, ComprasPorPeriodo } from "./Componentes/Paginas";
 import { Clientes, Sucursales, Roles, AgregarSucursal, AgregarRoles, EditarSucursal, EditarRol } from "./Componentes/Paginas";
@@ -70,6 +70,7 @@ function App() {
         <Route path='/Reportes/ComprasPorCliente' element={<ComprasPorCliente />}></Route>
         <Route path='/Reportes/ComprasPorPeriodo' element={<ComprasPorPeriodo />}></Route>
         <Route path='/Reportes/VentasPorPeriodo' element={<VentasPorPeriodo />}></Route>
+        <Route path="/Reportes/ExistenciaProductos" element={<ExistenciaProductos/>}></Route>
 
       </Routes>
     </div>

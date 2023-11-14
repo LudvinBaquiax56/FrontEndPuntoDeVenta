@@ -106,7 +106,7 @@ export const AgregarVentas = () => {
           </table>
           <br></br>
           <button className="button-35" onClick={handleClick}>Agregar elemento</button>
-          {/*<p>{JSON.stringify(data)}</p>*/}
+          <p>{JSON.stringify(data)}</p>
         </div>
         <table className="pie">
           <tr>

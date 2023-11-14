@@ -36,14 +36,11 @@ export const Reportes = () => {
             <h4>Ventas<br></br>por periodo</h4>
           </div>
         </NavLink>
-        <div className='card'>
-          <h4>Existencia de productos (Sucursal)</h4>
-        </div>  
-      </div>
-      <div className='main-cards'>
-        <div className='card'>
-          <h4>Existencia de productos (General)</h4>
-        </div>
+        <NavLink className='link' to="/Reportes/ExistenciaProductos">
+          <div className='card'>
+            <h4>Existencia<br></br>de Productos</h4>
+          </div>
+        </NavLink>
       </div>
     </main>
   )
