@@ -26,7 +26,13 @@ export const AgregarProductos = () => {
       const response = await axios.post('http://localhost:3000/producto/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "La marca ha sido registrada con éxito", "success");
+      swal({
+        title: "Registrado",
+        text: "El producto ha sido registrado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Productos";
+      });
 
     } catch (error) {
       swal("Error", "Error", "error")

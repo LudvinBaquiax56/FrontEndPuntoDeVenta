@@ -58,7 +58,13 @@ export const EditarProveedores = () => {
 
       const response = await axios.put('http://localhost:3000/proveedor/update', datosActualizados);
       console.log('Respuesta del servidor:', response.data);
-      swal("Actualizado", "La marca ha sido actualizada con éxito", "success");
+      swal({
+        title: "Actualizado",
+        text: "El proveedor ha sido actualizado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Proveedores";
+      });
     } catch (error) {
       swal("Error", "Error", "error");
       console.error('Error al enviar datos al backend:', error);

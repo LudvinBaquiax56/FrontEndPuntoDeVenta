@@ -7,6 +7,13 @@ import './forms.css'
 export const EditarProductos = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const onSubmit = (data) => {
+    swal({
+      title: "Actualizado",
+      text: "El producto ha sido actualizado con éxito",
+      type: "success"
+    }).then(function () {
+      window.location = "/Productos";
+    });
     console.log(data);
   }
   const alertaCampo = () => {

@@ -17,7 +17,7 @@ export const ComprasPorCliente = () => {
         // Determina la ruta dependiendo de la opcion activa en el select
         switch (selectedOption) {
           case 'general':
-            endpoint = 'http://localhost:3000/productos/ExistenciaGeneral';
+            endpoint = 'http://localhost:3000/clientes/ComprasGeneral';
             response = await axios.get(endpoint);
             setData(response.data);
             break;

@@ -16,11 +16,6 @@ export const Reportes = () => {
             <h4>Productos <br></br> Vendidos</h4>
           </div>
         </NavLink>
-        <NavLink className='link' to="/Reportes/ComprasClientes">
-          <div className='card'>
-            <h4>Clientes con más compras</h4>
-          </div>
-        </NavLink>
         <NavLink className='link' to="/Reportes/ComprasPorCliente">
           <div className='card'>
             <h4>Ventas por <br></br> Cliente</h4>
