@@ -60,7 +60,7 @@ export const ComprasPorCliente = () => {
         <div>
           <label>Filtro</label>
           <br></br>
-          <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
+          <select className='classic' value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
             <option value="general">General</option>
             <option value="sucursal">Por sucursal</option>
           </select>

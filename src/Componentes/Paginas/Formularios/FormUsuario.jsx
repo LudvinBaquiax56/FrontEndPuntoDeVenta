@@ -56,7 +56,7 @@ export const AgregarUsuario = () => {
           </div>
           <div className='user-box'>
             <label>Empleado</label><br></br>
-            <select {...register('id_empleado', { required: true })}>
+            <select className='classic' {...register('id_empleado', { required: true })}>
               {empleados.map((empleado) => (
                 <option key={empleado.id} value={empleado.id}>
                   {empleado.nombre}
@@ -68,7 +68,7 @@ export const AgregarUsuario = () => {
 
           <div className='user-box'>
             <label>Rol</label><br></br>
-            <select {...register('id_rol', { required: true })}>
+            <select className='classic' {...register('id_rol', { required: true })}>
               {roles.map((rol) => (
                 <option key={rol.id} value={rol.id}>
                   {rol.nombre}

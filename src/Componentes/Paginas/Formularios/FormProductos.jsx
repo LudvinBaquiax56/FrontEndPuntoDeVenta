@@ -65,7 +65,7 @@ export const AgregarProductos = () => {
           </div>
           <div className='user-box'>
             <label>Marca</label><br></br>
-            <select {...register('id_marca', { required: true })}>
+            <select className='classic' {...register('id_marca', { required: true })}>
               {marcas.map((marca) => (
                 <option key={marca.id} value={marca.id}>
                   {marca.nombre}
@@ -76,7 +76,7 @@ export const AgregarProductos = () => {
           </div>
           <div className='user-box'>
             <label>Categoria</label><br></br>
-            <select {...register('id_categoria', { required: true })}>
+            <select className='classic' {...register('id_categoria', { required: true })}>
               {categorias.map((categoria) => (
                 <option key={categoria.id} value={categoria.id}>
                   {categoria.nombre}
@@ -85,6 +85,7 @@ export const AgregarProductos = () => {
             </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>

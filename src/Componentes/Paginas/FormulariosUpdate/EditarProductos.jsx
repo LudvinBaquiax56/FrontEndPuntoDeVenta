@@ -42,7 +42,7 @@ export const EditarProductos = () => {
           </div>
           <div className='user-box'>
             <label>Marca</label><br></br>
-            <select {...register('id_marca', { required: true })}>
+            <select className='classic' {...register('id_marca', { required: true })}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
@@ -51,13 +51,14 @@ export const EditarProductos = () => {
           </div>
           <div className='user-box'>
             <label>Categoria</label><br></br>
-            <select {...register('id_categoria', {required:true})}>
+            <select className='classic' {...register('id_categoria', {required:true})}>
               <option value="1">1</option>
               <option value="2">2</option>
               <option value="3">3</option>
             </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>
