@@ -74,6 +74,7 @@ export const AgregarProductos = () => {
             </select>
             {errors.id_marca?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <div className='user-box'>
             <label>Categoria</label><br></br>
             <select className='classic' {...register('id_categoria', { required: true })}>

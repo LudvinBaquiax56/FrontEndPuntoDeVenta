@@ -15,7 +15,7 @@ export const ComprasPorPeriodo = () => {
       try {
         const response = await axios.get(`http://localhost:3000/compras/Compras/${fechaInicio},${fechaFin}`);
   
-        setData(response.data);
+        setData(response.data[0]);
         console.log(response.data);
       } catch (error) {
         console.error('Error al realizar la consulta:', error);
@@ -49,10 +49,6 @@ export const ComprasPorPeriodo = () => {
           <label>Hasta</label>
           <br></br>
           <input value={fechaFin || defaultFechaFin} onChange={handleFechaFinChange} type='date' id='hasta' name='hasta'></input>
-        </div>
-        <div>
-          <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
         </div>
       </div>
       <br></br>

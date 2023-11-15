@@ -7,6 +7,7 @@ import './forms.css';
 export const AgregarUsuario = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
 
+  const [sucursales, setSucursales] = useState([]);
   const [empleados, setEmpleado] = useState([]);
   const [roles, setRoles] = useState([]);
 
@@ -18,6 +19,10 @@ export const AgregarUsuario = () => {
     axios.get('http://localhost:3000/rol/find')
       .then((response) => setRoles(response.data))
       .catch((error) => console.error('Error al obtener las categorías', error));
+
+    axios.get('http://localhost:3000/sucursal/find')
+      .then((response) => setSucursales(response.data))
+      .catch((error) => console.error('Error al obtener las sucursales', error));
   }, []);
 
   const onSubmit = async (data) => {
@@ -77,7 +82,18 @@ export const AgregarUsuario = () => {
             </select>
             {errors.id_rol?.type === 'required' && alertaCampo()}
           </div>
-
+          <br></br>
+          <div className='user-box'>
+            <label>Sucursal</label><br></br>
+            <select className='classic' {...register('id_sucursal', { required: true })}>
+              {sucursales.map((sucursal) => (
+                <option key={sucursal.id} value={sucursal.id}>
+                  {sucursal.nombre}
+                </option>
+              ))}
+            </select>
+            {errors.id_sucursal?.type === 'required' && alertaCampo()}
+          </div>
           <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
