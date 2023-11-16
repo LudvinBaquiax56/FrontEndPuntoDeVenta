@@ -32,7 +32,7 @@ export const ProductosVendidos = () => {
 
           default:
             break;
-        }
+          }
 
         console.log(response.data);
       } catch (error) {
@@ -73,7 +73,7 @@ export const ProductosVendidos = () => {
         <div>
         <label>Filtro</label>
         <br></br>
-          <select value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
+          <select className='classic' value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
             <option value="masVendidos">Más vendidos</option>
             <option value="menosVendidos">Menos vendidos</option>
           </select>

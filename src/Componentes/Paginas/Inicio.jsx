@@ -29,11 +29,13 @@ export const Inicio = () => {
   return (
     <main className='main-container-inicio'>
       <div className='main-cards'>
-        <div className='card'>
-          <h3>ALERTA</h3>
-          Productos con baja existencia
-          <h1>{valorProductos !== null ? `${valorProductos}` : 'Cargando...'}</h1>
-        </div>
+        <NavLink className='link' to="/Reportes/ProductosExistenciaBaja">
+          <div className='card'>
+            <h3>ALERTA</h3>
+            Productos con baja existencia
+            <h1>{valorProductos !== null ? `${valorProductos}` : 'Cargando...'}</h1>
+          </div>
+        </NavLink>
       </div>
     </main>
   )

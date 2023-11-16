@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import swal from 'sweetalert';
@@ -6,6 +6,21 @@ import './forms.css'
 
 export const EditarProductos = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
+
+  const [marcas, setMarcas] = useState([]);
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    // Realiza una solicitud HTTP para obtener las opciones de "Marca" y "Categoría" desde el servidor.
+    axios.get('http://localhost:3000/marca/find')
+      .then((response) => setMarcas(response.data))
+      .catch((error) => console.error('Error al obtener las marcas', error));
+
+    axios.get('http://localhost:3000/categoria/find')
+      .then((response) => setCategorias(response.data))
+      .catch((error) => console.error('Error al obtener las categorías', error));
+  }, []);
+
   const onSubmit = (data) => {
     swal({
       title: "Actualizado",
@@ -38,26 +53,32 @@ export const EditarProductos = () => {
           </div>
           <div className='user-box'>
             <input name='descripcion' type='text' {...register('descripcion')} />
-            <label>DPI</label>
+            <label>Descripcion</label>
           </div>
           <div className='user-box'>
             <label>Marca</label><br></br>
-            <select {...register('id_marca', { required: true })}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select className='classic' {...register('id_marca', { required: true })}>
+              {marcas.map((marca) => (
+                <option key={marca.id} value={marca.id}>
+                  {marca.nombre}
+                </option>
+              ))}
             </select>
             {errors.id_marca?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <div className='user-box'>
             <label>Categoria</label><br></br>
-            <select {...register('id_categoria', {required:true})}>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
+            <select className='classic' {...register('id_categoria', { required: true })}>
+              {categorias.map((categoria) => (
+                <option key={categoria.id} value={categoria.id}>
+                  {categoria.nombre}
+                </option>
+              ))}
             </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>

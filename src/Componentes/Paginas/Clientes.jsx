@@ -51,6 +51,7 @@ export const Clientes = () => {
               <th>Telefono</th>
               <th>Puntos</th>
               <th>Editar</th>
+              <th>Eliminar</th>
             </tr>
           </thead>
           <tbody>
