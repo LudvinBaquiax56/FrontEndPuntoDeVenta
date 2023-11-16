@@ -22,6 +22,22 @@ export const AgregarVentas = () => {
     setNit(nuevoNit);
   };
 
+  const handleChangeSucursal = (event) => {
+    const nuevaSucursal = event.target.value;
+    setSucursal(nuevaSucursal);
+  };
+
+
+  const handleChangeFactura = (event) => {
+    const factura = event.target.value;
+    setFactura(factura);
+  };
+
+  const handleChangeUsuario = (event) => {
+    const nuevaSucursal = event.target.value;
+    setSucursal(nuevaSucursal);
+  };
+
   const handleChangeDescuento = (event) => {
     const nuevoDescuento = event.target.value;
     setDescuento(nuevoDescuento);
@@ -46,10 +62,30 @@ export const AgregarVentas = () => {
 
 
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setData([...data, { id_producto: "", codigo: "", producto: "", descripcion: "", precio: "", costo: "", cantidad: "", subtotal: "" }])
+
+    try {
+      const response = await axios.get(`http://localhost:3000/productoSucursal/${data[data.length - 1].codigo},1`);
+      console.log(response.data);
+      const datosObtenidos = {
+        id_producto: response.data.id,
+        codigo: response.data.codigo,
+        producto: response.data.nombre,
+        descripcion: response.data.descripcion,
+        precio: response.data.precio,
+        costo: 0,
+        cantidad: data[data.length - 1].cantidad,
+        subtotal: response.data.precio * data[data.length - 1].cantidad
+      };
+      setData(prevData => [...prevData, datosObtenidos]);
+
+    } catch (error) {
+      console.error('Error al buscar por NIT:', error);
+    }
     console.log(data)
   }
+
   const handleChange = (e, i) => {
     const { name, value } = e.target
     const onchangeVal = [...data]
@@ -63,35 +99,39 @@ export const AgregarVentas = () => {
   }
 
   const enviarDatos = async () => {
-    setSucursal(1)
-    setUsuario(1)
-    setFactura(213)
     console.log(datosCliente)
-    const jsonNit = JSON.stringify({ id_cliente: datosCliente.id_cliente.toString() });
-    const nitObject = JSON.parse(jsonNit);
-
-    const jsonSucursal = JSON.stringify({ id_sucursal: sucursal.toString() });
-    const sucursalObject = JSON.parse(jsonSucursal);
-
-    const jsonUsuario = JSON.stringify({ id_usuario: id_usuario.toString() })
+    //cliente
+    const jsonID = JSON.stringify({ id_cliente: datosCliente.id_cliente.toString() });
+    const IDObject = JSON.parse(jsonID);
+    //Usuario
+    const jsonUsuario = JSON.stringify({ id_usuario: "1".toString() })
     const usuarioObject = JSON.parse(jsonUsuario)
 
-    const jsonDescuento = JSON.stringify({ descuento: descuento.toString() })
+    const jsonDescuento = JSON.stringify({ descuento: "10".toString() })
     const descuentoObjec = JSON.parse(jsonDescuento)
 
-    const jsonFactura = JSON.stringify({ no_factura: no_factura.toString() })
+    const jsonFactura = JSON.stringify({ no_factura: "345".toString() })
     const facturaObject = JSON.parse(jsonFactura)
 
-    const datosCombinados = { ...nitObject, ...sucursalObject, ...usuarioObject, ...descuentoObjec, ...facturaObject };
+    const datosCombinados = { ...IDObject, ...usuarioObject, ...descuentoObjec, ...facturaObject };
 
     console.log(datosCombinados);
 
-
-
     try {
+      console.log("Informacion")
       console.log(datosCombinados);
+      console.log("data")
+      console.log(data)
+      console.log("--------------")
       const response = await axios.post('http://localhost:3000/factura/create', datosCombinados);
       console.log('Respuesta del servidor:', response.data);
+
+      data.forEach(async function (elemento) {
+        if (elemento.id != "") {
+          const response = await axios.post('http://localhost:3000/detalleFactura/create', elemento)
+          console.log(elemento);
+        }
+      });
 
       swal("Registrado", "La venta ha sido realizda con éxito", "success");
 
@@ -116,7 +156,7 @@ export const AgregarVentas = () => {
             <td></td>
             <td className="posicion-derecha">
               <label for='no_factura'>Factura # &emsp;</label>
-              <input className="elementos-derecha" id="no_factura" name="no_factura" type='text' />
+              <input className="elementos-derecha" id="no_factura" name="no_factura" type='text' onChange={handleChangeFactura} />
             </td>
           </tr>
           <tr>
@@ -133,8 +173,8 @@ export const AgregarVentas = () => {
               <button className="button-35" onClick={handleBuscarPorNit}>Buscar Cliente</button>
             </td>
             <td className="posicion-derecha">
-              <label for='sucursal'>Sucursal &emsp;</label>
-              <input className="elementos-derecha" id="sucursal" name="sucursal" type='text' disabled />
+              <label for='sucursal'>Usuario &emsp;</label>
+              <input className="elementos-derecha" onChange={handleChangeUsuario} id="sucursal" name="sucursal" type='text' />
               <input type="hidden" id="id_sucursal" name="id_sucursal"></input>
             </td>
           </tr>
@@ -149,7 +189,7 @@ export const AgregarVentas = () => {
               )}
             </td>
             <td className="posicion-derecha">
-              <label>Vendedor&emsp;</label>
+              <label>Usuario&emsp;</label>
               <input className="elementos-derecha" id="vendedor" name="vendedor" type='text' disabled />
               <input type="hidden" id="id_usuario" name="id_usuario"></input>
             </td>
