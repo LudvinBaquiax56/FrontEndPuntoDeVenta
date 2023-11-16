@@ -11,7 +11,13 @@ export const AgregarProveedores = () => {
       const response = await axios.post('http://localhost:3000/proveedor/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "El proveedor ha sido registrada con éxito", "success");
+      swal({
+        title: "Registrado",
+        text: "El proveedor ha sido registrado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Proveedores";
+      });
 
     } catch (error) {
       swal("Error", "Error", "error")

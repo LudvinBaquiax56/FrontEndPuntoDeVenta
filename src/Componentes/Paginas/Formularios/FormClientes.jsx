@@ -12,7 +12,13 @@ export const AgregarClientes = () => {
       const response = await axios.post('http://localhost:3000/cliente/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "El Cliente ha sido registrado con éxito", "success");
+      swal({
+        title: "Registrado",
+        text: "El cliente ha sido registrado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Clientes";
+      });
 
     } catch (error) {
       console.error('Error al enviar datos al backend:', error);

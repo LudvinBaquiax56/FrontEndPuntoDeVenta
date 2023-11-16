@@ -12,7 +12,7 @@ export const Productos = () => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/producto/find')
+    axios.get('http://localhost:3000/productos/General')
       .then((response) => {
         setData(response.data);
       })
@@ -22,6 +22,18 @@ export const Productos = () => {
 
       });
   }, []);
+
+  const handleClick = async (id) => {
+    try {
+      const response = await axios.put(`http://localhost:3000/producto/delete/${id}`);
+      console.log('Respuesta del servidor:', response.data);
+      swal("Actualizado", "El dato ha sido eliminado con éxito", "success");
+      window.location.reload();
+    } catch (error) {
+      console.error('Error al eliminar el proveedor:', error);
+      swal("Error", "Se produjo un error al eliminar el dato", "error");
+    }
+  }
 
   return (
     <main className='main-container'>
@@ -46,12 +58,12 @@ export const Productos = () => {
           <tbody>
             {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.codigo}</td>
-                <td>{item.nombre}</td>
-                <td>{item.id_marca}</td>
-                <td>{item.id_categoria}</td>
+                <td>{item.Codigo}</td>
+                <td>{item.Nombre}</td>
+                <td>{item.Marca}</td>
+                <td>{item.Categoria}</td>
                 <td><NavLink to={`/EditarProducto/${item.id}`}><button type="button" class="btn btn-info"><BsFillPencilFill className='icon' /></button></NavLink></td>
-                <td><button type="button" class="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
+                <td><button onClick={() => handleClick(item.id)} type="button" className="btn btn-danger"><BsFillTrashFill className='icon' /></button></td>
               </tr>
             ))}
           </tbody>

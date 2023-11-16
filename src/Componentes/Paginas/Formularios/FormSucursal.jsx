@@ -11,7 +11,13 @@ export const AgregarSucursal = () => {
       const response = await axios.post('http://localhost:3000/sucursal/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "La marca ha sido registrada con éxito", "success");
+      swal({
+        title: "Registro Exitoso",
+        text: "El registro se ha guardado exitosamente",
+        type: "success"
+      }).then(function () {
+        window.location = "/Sucursales";
+      });
 
     } catch (error) {
       swal("Error", "Error", "error")

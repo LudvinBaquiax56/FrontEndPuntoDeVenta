@@ -4,18 +4,46 @@ import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const ComprasPorCliente = () => {
+  const [selectedOption, setSelectedOption] = useState('general');
   const [data, setData] = useState([]);
+  const [idSucursal, setIdSucursal] = useState('1');
 
   useEffect(() => {
-    axios.get('http://localhost:3000/categoria/find')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos de la API:', error);
-        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        let endpoint = '';
+        let response;
+        const finalIdSucursal = idSucursal || '1';//Si el valor del input de id sucursal es nulo entonces que el valor se mantenga en 1
+        // Determina la ruta dependiendo de la opcion activa en el select
+        switch (selectedOption) {
+          case 'general':
+            endpoint = 'http://localhost:3000/clientes/ComprasGeneral';
+            response = await axios.get(endpoint);
+            setData(response.data);
+            break;
+          case 'sucursal':
+            endpoint = `http://localhost:3000/clientes/ComprasPorSucursal/${finalIdSucursal}`;
+            response = await axios.get(endpoint);
+            setData(response.data[0]);
+            break;
+
+          default:
+            break;
+        }
+
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error fetching data:', error);
+        // Handle error
+      }
+    };
+
+    fetchData();
+  }, [selectedOption, idSucursal]); // Trigger the effect whenever the selectedOption changes
+
+  const handleInputChange = (e) => {
+    setIdSucursal(e.target.value);
+  };
 
   return (
     <main className='main-container'>
@@ -25,13 +53,17 @@ export const ComprasPorCliente = () => {
           <h3>Ventas por Clientes</h3>
         </div>
         <div>
-          <label for='cliente'>Cliente</label>
+          <label>Sucursal</label>
           <br></br>
-          <input name='cliente' id='cliente' type='text'/>
+          <input id='id_sucursal' name='id_sucursal' type='text' value={idSucursal} onChange={handleInputChange} />
         </div>
         <div>
+          <label>Filtro</label>
           <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
+          <select className='classic' value={selectedOption} onChange={(e) => setSelectedOption(e.target.value)} name='filtro' id='filtro'>
+            <option value="general">General</option>
+            <option value="sucursal">Por sucursal</option>
+          </select>
         </div>
       </div>
       <br></br>
@@ -39,24 +71,19 @@ export const ComprasPorCliente = () => {
         <table className='table' >
           <thead className='table-light'>
             <tr>
-              <th>NIT</th>
               <th>Cliente</th>
-              <th>Producto</th>
-              <th>Cantidad</th>
-              <th>Precio</th>
-              <th>Subtotal</th>
-              <th>Fecha</th>
+              <th>Nit</th>
+              <th>Compras</th>
             </tr>
           </thead>
           <tbody>
-            {/*data.map((item) => (
+            {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.productos.codigo}</td>
-                <td>{item.productos.nombre}</td>
-                <td>{item.TotalVendido}</td>
-                <td>{item.facturas.fecha}</td>
+                <td>{item.Cliente}</td>
+                <td>{item.Nit}</td>
+                <td>{item.TotalCompras}</td>
               </tr>
-            ))*/}
+            ))}
           </tbody>
         </table>
       </div>

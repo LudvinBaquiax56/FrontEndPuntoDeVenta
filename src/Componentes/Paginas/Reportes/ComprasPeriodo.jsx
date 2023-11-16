@@ -4,18 +4,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';// Validar si usar boostrap
 import './forms.css'
 
 export const ComprasPorPeriodo = () => {
+  const defaultFechaInicio = '2023-01-01'; // Fechas determinadas de inicio y fin 
+  const defaultFechaFin = '2023-12-31'
+  const [fechaInicio, setFechaInicio] = useState(defaultFechaInicio);
+  const [fechaFin, setFechaFin] = useState(defaultFechaFin);
   const [data, setData] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:3000/categoria/find')
-      .then((response) => {
-        setData(response.data);
-      })
-      .catch((error) => {
-        console.error('Error al obtener datos de la API:', error);
-        swal("Error en el servidor", "Hubo un error al obtener datos del servidor. Por favor, inténtalo de nuevo.", "error")
-      });
-  }, []);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(`http://localhost:3000/compras/Compras/${fechaInicio},${fechaFin}`);
+  
+        setData(response.data[0]);
+        console.log(response.data);
+      } catch (error) {
+        console.error('Error al realizar la consulta:', error);
+      }
+    };
+    fetchData();
+  }, [fechaInicio, fechaFin]);
+
+  const handleFechaInicioChange = (e) => {
+    setFechaInicio(e.target.value);
+    console.log(fechaInicio);
+  };
+
+  const handleFechaFinChange = (e) => {
+    setFechaFin(e.target.value);
+  };
 
   return (
     <main className='main-container'>
@@ -25,18 +41,14 @@ export const ComprasPorPeriodo = () => {
           <h3>Compras por Periodo</h3>
         </div>
         <div>
-          <label for='desde'>Desde</label>
+          <label>Desde</label>
           <br></br>
-          <input type='date' id='desde' name='desde'></input>
+          <input value={fechaInicio || defaultFechaInicio} onChange={handleFechaInicioChange} type='date' id='desde' name='desde'></input>
         </div>
         <div>
-          <label for='hasta'>Hasta</label>
+          <label>Hasta</label>
           <br></br>
-          <input type='date' id='hasta' name='hasta'></input>
-        </div>
-        <div>
-          <br></br>
-          <input className='button-37' type='button' value="Aplicar" />
+          <input value={fechaFin || defaultFechaFin} onChange={handleFechaFinChange} type='date' id='hasta' name='hasta'></input>
         </div>
       </div>
       <br></br>
@@ -52,14 +64,15 @@ export const ComprasPorPeriodo = () => {
             </tr>
           </thead>
           <tbody>
-            {/*data.map((item) => (
+            {data.map((item) => (
               <tr key={item.id}>
-                <td>{item.productos.codigo}</td>
-                <td>{item.productos.nombre}</td>
-                <td>{item.TotalVendido}</td>
-                <td>{item.facturas.fecha}</td>
+                <td>{item.Producto}</td>
+                <td>{item.Cantidad}</td>
+                <td>{item.Costo}</td>
+                <td>{item.Subtotal}</td>
+                <td>{item.Fecha}</td>
               </tr>
-            ))*/}
+            ))}
           </tbody>
         </table>
       </div>

@@ -26,7 +26,13 @@ export const AgregarProductos = () => {
       const response = await axios.post('http://localhost:3000/producto/create', data);
       console.log('Respuesta del servidor:', response.data);
 
-      swal("Registrado", "La marca ha sido registrada con éxito", "success");
+      swal({
+        title: "Registrado",
+        text: "El producto ha sido registrado con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Productos";
+      });
 
     } catch (error) {
       swal("Error", "Error", "error")
@@ -59,7 +65,7 @@ export const AgregarProductos = () => {
           </div>
           <div className='user-box'>
             <label>Marca</label><br></br>
-            <select {...register('id_marca', { required: true })}>
+            <select className='classic' {...register('id_marca', { required: true })}>
               {marcas.map((marca) => (
                 <option key={marca.id} value={marca.id}>
                   {marca.nombre}
@@ -68,9 +74,10 @@ export const AgregarProductos = () => {
             </select>
             {errors.id_marca?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <div className='user-box'>
             <label>Categoria</label><br></br>
-            <select {...register('id_categoria', { required: true })}>
+            <select className='classic' {...register('id_categoria', { required: true })}>
               {categorias.map((categoria) => (
                 <option key={categoria.id} value={categoria.id}>
                   {categoria.nombre}
@@ -79,6 +86,7 @@ export const AgregarProductos = () => {
             </select>
             {errors.id_categoria?.type === 'required' && alertaCampo()}
           </div>
+          <br></br>
           <input className='button-36' type='submit' value="Enviar" /><br></br>
         </form>
       </div>

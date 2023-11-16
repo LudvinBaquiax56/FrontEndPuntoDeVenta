@@ -25,19 +25,9 @@ export const ClientesMasCompras = () => {
           <h3>Compras de Clientes</h3>
         </div>
         <div>
-          <label for='desde'>Mostrar</label>
+          <label>Filtro</label>
           <br></br>
-          <select>
-            <option value="10">10</option>
-            <option value="20">20</option>
-            <option value="30">30</option>
-            <option value="50">50</option>
-          </select>
-        </div>
-        <div>
-          <label for='hasta'>Filtro</label>
-          <br></br>
-          <select>
+          <select className='classic'>
             <option value="masVendidos">Por sucursal</option>
             <option value="menosVendidos">General</option>
           </select>

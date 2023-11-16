@@ -42,7 +42,13 @@ export const EditarCategorias = () => {
 
       const response = await axios.put('http://localhost:3000/categoria/update', datosActualizados);
       console.log('Respuesta del servidor:', response.data);
-      swal("Actualizado", "La marca ha sido actualizada con éxito", "success");
+      swal({
+        title: "Actualizada",
+        text: "La categoria ha sido actualizada con éxito",
+        type: "success"
+      }).then(function () {
+        window.location = "/Categorias";
+      });
     } catch (error) {
       swal("Error", "Error", "error");
       console.error('Error al enviar datos al backend:', error);
